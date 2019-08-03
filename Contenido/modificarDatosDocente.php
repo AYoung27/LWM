@@ -1,0 +1,89 @@
+<?php 
+	include("../clases/Conexion.php");
+	$conexion= new Conexion();
+	$conexion->mysql_set_charset("utf8");
+	session_start();
+	if (empty($_SESSION)) {
+		header('Location: index.php');
+	}
+
+	$consulta="SELECT nombre,apellido,correo,cedula,fechaNacimiento,telefono,tbl_departamentos.nombreDepartamento,tbl_departamentos.departamentoID, tbl_municipios.NombreMunicipio,tbl_municipios.municipioID FROM tbl_usuarios , tbl_departamentos,tbl_municipios WHERE tbl_departamentos.DepartamentoID=tbl_usuarios.DepartamentoID and tbl_usuarios.municipioID=tbl_municipios.MunicipioID and usuarioID=".$_POST['usuarioID'];
+	$resultado=$conexion->ejecutarconsulta($consulta);
+	$data=$conexion->obtenerfila($resultado);
+?>
+	<div class="col-md-12" style="border-width: 1px 1px 1px 1px; border-style: solid; border-color: lightgray;">
+				<br>
+				<h4 style="text-align: center;">
+					Gestion de Docentes
+				</h4>
+
+				<hr>
+						<hr>
+
+							<form method="post" action="Acciones/modificarRegistroDocente.php">
+								<div class="row mb-4" >
+									<div class="col-lg-6">
+										<label>Ingresa Nuevo nombre:</label>
+
+										<input type="text" name="txtNombre"  value="<?php echo $data['nombre']; ?>" class="form-control">
+									</div>
+									<div class="col-lg-6">
+										<label>Ingresa nuevo apellido:</label>
+										<input type="text" name="txtApellido" value="<?php echo $data['apellido']; ?>" class="form-control">
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="col-lg-4">
+										<label>Ingresa nuevo numero de cedula:</label>
+										<input type="number" name="txtCedula" value="<?php echo $data['cedula']; ?>" class="form-control">
+									</div>
+									<div class="col-lg-4">
+										<label>Ingresa nuevo numero de telefono:</label>
+										<input type="number" name="txtTelefono" value="<?php echo $data['telefono']; ?>" class="form-control">
+									</div>
+
+								</div>
+								<div class="row mb-4">
+									<div class="col-lg-4">
+										<label>Selecciona un nuevo departamento:</label>
+										<select class="custom-select" name="slcDepartamento"  class="form-control">
+											<option value="<?php echo $data['departamentoID']; ?>" selected> <?php echo $data['nombreDepartamento']  ?></option>
+											<?php
+												$consulta="SELECT DepartamentoID, nombreDepartamento FROM tbl_departamentos";
+ 												$resultado=$conexion->ejecutarconsulta($consulta); 
+ 												while ($arreglo=$resultado->fetch_array()) {
+ 													echo '<option value="'.$arreglo[DepartamentoID].'">'.$arreglo[nombreDepartamento]."</option>";
+ 												}
+ 											?>
+										</select>
+									</div>
+									<div class="col-lg-4">
+										<label>Selecciona un nuevo municipio:</label>
+										<select class="custom-select" name="slcMunicipio"  class="form-control">
+											<option value="<?php echo $data['municipioID']; ?>" selected> <?php echo $data['NombreMunicipio'] ?> </option>
+											<?php
+												$consulta="SELECT MunicipioID, nombreMunicipio FROM tbl_municipios";
+ 												$resultado=$conexion->ejecutarconsulta($consulta); 
+ 												while ($arreglo=$resultado->fetch_array()) {
+ 													echo '<option value="'.$arreglo[MunicipioID].'">'.$arreglo[nombreMunicipio]."</option>";
+ 												}
+ 											?>
+										</select>
+									</div>
+								</div>
+								<div class="row mb-3" >
+									<div class="col-lg-6">
+										<label>Ingresa nuevo correo:</label>
+
+										<input type="email" name="txtCorreo" value="<?php echo $data['correo']; ?>" class="form-control">
+										<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $_POST['usuarioID'];?>" style="display: none;">
+									</div>
+
+								</div>
+								<div class="row mb-3 ml-2">
+									<button type="submit" class="btn btn-primary mr-2 ">Modificar Docente</button>
+									<a href="#" class="btn btn-danger" onclick="cargarDiv('zonaContenido', 'Contenido/modificarDocente.php')">Cancelar</a>
+								</div>
+							</form>
+
+						</div>
