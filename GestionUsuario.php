@@ -58,7 +58,7 @@ $conexion->mysql_set_charset("utf8");
 		</div>
 		<a href="index.php" ><button class=" btn btn-primary mb-2">Regresar</button></a>
 	</div>
-	<footer class="py-5 mw-100 bg-dark">
+	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
 		<div class="container">
 			<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
 		</div>

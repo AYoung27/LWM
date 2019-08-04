@@ -30,14 +30,14 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="fas fa-user"></i></span>
 										</div>
-										<input type="email" id="inputEmail" name="txtCorreo" class="form-control" placeholder="Correo">
+										<input type="email" id="inputEmail" name="txtCorreo" class="form-control" placeholder="Correo" required>
 
 									</div>
 									<div class="input-group form-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="fas fa-key"></i></span>
 										</div>
-										<input type="password" id="inputPassword" name="txtPassword" class="form-control" placeholder="password">
+										<input type="password" id="inputPassword" name="txtPassword" class="form-control" placeholder="password" required>
 									</div>
 									<div class="row align-items-center remember">
 										<input type="checkbox">Recuerdame

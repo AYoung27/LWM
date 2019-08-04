@@ -7,14 +7,14 @@
 		header('Location: Login.php');
 	}
 
-	$consulta="SELECT nombre,apellido,correo,cedula,fechaNacimiento,telefono,tbl_departamentos.nombreDepartamento,tbl_departamentos.departamentoID, tbl_municipios.NombreMunicipio,tbl_municipios.municipioID FROM tbl_usuarios , tbl_departamentos,tbl_municipios WHERE tbl_departamentos.DepartamentoID=tbl_usuarios.DepartamentoID and tbl_usuarios.municipioID=tbl_municipios.MunicipioID and usuarioID=".$_POST['usuarioID'];
+	$consulta="SELECT nombre,apellido,correo,cedula,fechaNacimiento,telefono,tbl_departamentos.nombreDepartamento,tbl_departamentos.departamentoID, tbl_municipios.NombreMunicipio,tbl_municipios.municipioID,tbl_secciones.SeccionID,tbl_secciones.nombreSeccion,tbl_jornadas.JornadaID, tbl_jornadas.nombreJornada FROM tbl_usuarios , tbl_departamentos,tbl_municipios, tbl_jornadas,tbl_secciones, tbl_estudiantes WHERE tbl_departamentos.DepartamentoID=tbl_usuarios.DepartamentoID and tbl_usuarios.municipioID=tbl_municipios.MunicipioID AND tbl_secciones.SeccionID=tbl_estudiantes.SeccionID AND tbl_jornadas.JornadaID=tbl_estudiantes.JornadaID and tbl_usuarios.usuarioID=tbl_estudiantes.usuarioID and tbl_usuarios.usuarioID=".$_POST['usuarioID'];
 	$resultado=$conexion->ejecutarconsulta($consulta);
 	$data=$conexion->obtenerfila($resultado);
 ?>
 	<div class="col-md-12" style="border-width: 1px 1px 1px 1px; border-style: solid; border-color: lightgray;">
 				<br>
 				<h4 style="text-align: center;">
-					Gestion de Docentes
+					Gestion de Estudiante
 				</h4>
 
 				<hr>
@@ -70,6 +70,35 @@
  											?>
 										</select>
 									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="col-lg-4">
+									<label>Seccion:</label>
+										<select class="custom-select form-control" name="slcSeccion">
+											<option value="<?php echo $data['SeccionID']; ?>" selected><?php echo $data['nombreSeccion'] ?></option>
+											<?php 
+												$consulta="SELECT SeccionID,nombreSeccion FROM tbl_secciones";
+												$resultado=$conexion->ejecutarconsulta($consulta);
+												while($arreglo=$resultado->fetch_array()){
+													echo '<option value="'.$arreglo[SeccionID].'">'.$arreglo[nombreSeccion]."</option>";
+												}
+											 ?>
+										</select>
+									</div>
+									<div class="col-lg-4">
+										<label>Jornada:</label>
+										<select class="custom-select form-control" name="slcJornada">
+											<option value="<?php echo $data['JornadaID']; ?>" selected><?php echo $data['nombreJornada'] ?></option>
+											<?php 
+												$consulta="SELECT JornadaID,nombreJornada FROM tbl_jornadas";
+												$resultado=$conexion->ejecutarconsulta($consulta);
+												while($arreglo=$resultado->fetch_array()){
+													echo '<option value="'.$arreglo[JornadaID].'">'.$arreglo[nombreJornada]."</option>";
+												}
+											 ?>
+										</select>
+									</div>
+
 								</div>
 								<div class="row mb-3" >
 									<div class="col-lg-6">

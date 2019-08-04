@@ -89,7 +89,7 @@ if (empty($_SESSION)) {
 
 
 
-<footer class="py-5 mw-100 bg-dark fixed">
+<footer class="py-5 mw-100 bg-dark" style="bottom: 0; position: absolute; width: 100%;">
 	<div class="container">
 		<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
 	</div>

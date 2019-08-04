@@ -49,7 +49,7 @@ $conexion->mysql_set_charset("utf8");
 							<a class="nav-link disabled" href="#AgregarEstudiante" aria-disabled="true">Agregar Estudiante</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#ModificarEstudiante" onclick="listarEstudiantes(''),cargarDiv('zonaContenido','Contenido/modificarEstudiante.php')" >Modificar docente</a>
+							<a class="nav-link" href="#ModificarEstudiante" onclick="listarEstudiantes(''),cargarDiv('zonaContenido','Contenido/modificarEstudiante.php')" >Modificar Estudiante</a>
 						</li>
 					</ul>
 				</div>
@@ -124,6 +124,35 @@ $conexion->mysql_set_charset("utf8");
 										</select>
 									</div>
 								</div>
+								<div class="row mb-4">
+									<div class="col-lg-4">
+									<label>Seccion:</label>
+										<select class="custom-select form-control" name="slcSeccion">
+											<option selected>Elija una seccion</option>
+											<?php 
+												$consulta="SELECT SeccionID,nombreSeccion FROM tbl_secciones";
+												$resultado=$conexion->ejecutarconsulta($consulta);
+												while($arreglo=$resultado->fetch_array()){
+													echo '<option value="'.$arreglo[SeccionID].'">'.$arreglo[nombreSeccion]."</option>";
+												}
+											 ?>
+										</select>
+									</div>
+									<div class="col-lg-4">
+										<label>Jornada:</label>
+										<select class="custom-select form-control" name="slcJornada">
+											<option selected>Elija una jornada</option>
+											<?php 
+												$consulta="SELECT JornadaID,nombreJornada FROM tbl_jornadas";
+												$resultado=$conexion->ejecutarconsulta($consulta);
+												while($arreglo=$resultado->fetch_array()){
+													echo '<option value="'.$arreglo[JornadaID].'">'.$arreglo[nombreJornada]."</option>";
+												}
+											 ?>
+										</select>
+									</div>
+
+								</div>
 								<div class="row mb-4" >
 									<div class="col-lg-4">
 										<label>Correo:</label>
@@ -147,7 +176,7 @@ $conexion->mysql_set_charset("utf8");
 			</div>
 		</div>
 	</div>
-	<footer class="py-5 mw-100 bg-dark">
+	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
 		<div class="container">
 			<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
 		</div>

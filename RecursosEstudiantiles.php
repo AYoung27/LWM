@@ -95,11 +95,8 @@ if (empty($_SESSION)) {
 			?>
 		</div>
 	</div>
-		<footer class="py-5 mw-100 bg-dark fixed-bottom">
-			<div class="container">
+		<footer class="py-5 bg-dark" style="bottom: 0; position: absolute; width: 100%;">
 				<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
-			</div>
-			<!-- /.container -->
 		</footer>
 	</body>
 	</html>

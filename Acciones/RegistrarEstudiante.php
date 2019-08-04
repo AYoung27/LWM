@@ -15,6 +15,8 @@
 	$departamento=$_POST["slcDepartamento"];
 	$municipio=$_POST["slcMunicipio"];
 	$curso=$_POST["slcCurso"];
+	$jornada=$_POST["slcJornada"];
+	$seccion=$_POST["slcSeccion"];
 	
 
 	$consulta = sprintf("SELECT count(*) FROM tbl_usuarios WHERE Correo = '%s'",$conexion->antiInyeccion($correo));
@@ -33,7 +35,7 @@
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$usuarioid=$resultado->fetch_array();
 
-			$consulta=sprintf("INSERT into tbl_estudiantes(usuarioID) values('%s')",$conexion->antiInyeccion($usuarioid['usuarioID']));
+			$consulta=sprintf("INSERT into tbl_estudiantes(usuarioID, SeccionID,JornadaID) values('%s','%s','%s')",$conexion->antiInyeccion($usuarioid['usuarioID']),$conexion->antiInyeccion($seccion),$conexion->antiInyeccion($jornada));
 			$conexion->ejecutarconsulta($consulta);
 
 			$consulta =sprintf("INSERT INTO tbl_sesion(usuarioID, estado) values('%s','%s')", $conexion->antiInyeccion($usuarioid['usuarioID']), $conexion->antiInyeccion("0"));
