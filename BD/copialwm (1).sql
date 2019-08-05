@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-08-2019 a las 02:51:08
--- Versión del servidor: 5.7.23
--- Versión de PHP: 7.1.22
+-- Tiempo de generación: 05-08-2019 a las 03:04:37
+-- Versión del servidor: 5.7.26
+-- Versión de PHP: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tbl_asignaturas` (
   `CursoID` int(11) DEFAULT NULL,
   PRIMARY KEY (`asignaturaID`),
   KEY `CursoID` (`CursoID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_asignaturas`
@@ -46,7 +46,8 @@ INSERT INTO `tbl_asignaturas` (`asignaturaID`, `nombreAsignatura`, `CursoID`) VA
 (2, 'Español', 2),
 (3, 'Estudios Sociales', 2),
 (4, 'Civica', 1),
-(5, 'Ciencias Naturales', 3);
+(5, 'Ciencias Naturales', 3),
+(6, 'Fisica', 2);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,6 @@ INSERT INTO `tbl_asignaturasxdocente` (`asignaturaID`, `docenteID`) VALUES
 (1, 7),
 (2, 7),
 (3, 7),
-(4, 7),
 (5, 7);
 
 -- --------------------------------------------------------
@@ -94,29 +94,6 @@ INSERT INTO `tbl_cursos` (`CursoID`, `nombreCurso`) VALUES
 (1, 'Septimo'),
 (2, 'octavo'),
 (3, 'noveno');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_cursosxjornada`
---
-
-DROP TABLE IF EXISTS `tbl_cursosxjornada`;
-CREATE TABLE IF NOT EXISTS `tbl_cursosxjornada` (
-  `JornadaID` int(11) DEFAULT NULL,
-  `CursoID` int(11) DEFAULT NULL,
-  KEY `JornadaID` (`JornadaID`),
-  KEY `CursoID` (`CursoID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_cursosxjornada`
---
-
-INSERT INTO `tbl_cursosxjornada` (`JornadaID`, `CursoID`) VALUES
-(1, 1),
-(2, 1),
-(2, 2);
 
 -- --------------------------------------------------------
 
@@ -152,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `tbl_docentes` (
   `usuarioID` int(11) DEFAULT NULL,
   PRIMARY KEY (`DocenteID`),
   KEY `usuarioID` (`usuarioID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_docentes`
@@ -160,12 +137,12 @@ CREATE TABLE IF NOT EXISTS `tbl_docentes` (
 
 INSERT INTO `tbl_docentes` (`DocenteID`, `usuarioID`) VALUES
 (1, 9),
-(2, 10),
 (3, 11),
 (4, 12),
 (5, 13),
 (6, 14),
-(7, 15);
+(7, 15),
+(8, 24);
 
 -- --------------------------------------------------------
 
@@ -178,22 +155,19 @@ CREATE TABLE IF NOT EXISTS `tbl_estudiantes` (
   `EstudianteID` int(11) NOT NULL AUTO_INCREMENT,
   `usuarioID` int(11) DEFAULT NULL,
   `SeccionID` int(11) NOT NULL,
-  `JornadaID` int(11) NOT NULL,
   PRIMARY KEY (`EstudianteID`),
   KEY `usuarioID` (`usuarioID`),
-  KEY `SeccionID` (`SeccionID`),
-  KEY `JornadaID` (`JornadaID`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  KEY `SeccionID` (`SeccionID`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_estudiantes`
 --
 
-INSERT INTO `tbl_estudiantes` (`EstudianteID`, `usuarioID`, `SeccionID`, `JornadaID`) VALUES
-(1, 16, 0, 0),
-(6, 21, 1, 1),
-(7, 22, 0, 0),
-(8, 23, 3, 2);
+INSERT INTO `tbl_estudiantes` (`EstudianteID`, `usuarioID`, `SeccionID`) VALUES
+(10, 26, 3),
+(11, 27, 3),
+(12, 30, 3);
 
 -- --------------------------------------------------------
 
@@ -214,30 +188,9 @@ CREATE TABLE IF NOT EXISTS `tbl_estudiantesxcurso` (
 --
 
 INSERT INTO `tbl_estudiantesxcurso` (`CursoID`, `estudianteID`) VALUES
-(1, 6),
-(3, 7),
-(2, 8);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_jornadas`
---
-
-DROP TABLE IF EXISTS `tbl_jornadas`;
-CREATE TABLE IF NOT EXISTS `tbl_jornadas` (
-  `JornadaID` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreJornada` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`JornadaID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_jornadas`
---
-
-INSERT INTO `tbl_jornadas` (`JornadaID`, `nombreJornada`) VALUES
-(1, 'Matutina'),
-(2, 'Vespertina');
+(2, 10),
+(2, 11),
+(2, 12);
 
 -- --------------------------------------------------------
 
@@ -256,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `tbl_log` (
   `UsuarioID` int(11) DEFAULT NULL,
   PRIMARY KEY (`LogID`),
   KEY `UsuarioID` (`UsuarioID`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_log`
@@ -306,7 +259,47 @@ INSERT INTO `tbl_log` (`LogID`, `Evento`, `Descripcion`, `Fecha`, `Hora`, `Direc
 (41, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-02', '12:52:15', '::1', 2),
 (42, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-02', '13:19:55', '::1', 2),
 (43, 'Inicio de sesion', 'El usuario con correo: maverick@gmail.com ha iniciado sesion', '2019-08-02', '20:05:45', '::1', 23),
-(44, 'Cierre de sesion', 'El usuario con correo: maverick@gmail.com ha cerrado sesion', '2019-08-02', '20:06:12', '::1', 23);
+(44, 'Cierre de sesion', 'El usuario con correo: maverick@gmail.com ha cerrado sesion', '2019-08-02', '20:06:12', '::1', 23),
+(45, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '10:32:53', '::1', 15),
+(46, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '10:46:04', '::1', 15),
+(47, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '10:46:21', '::1', 2),
+(48, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-04', '11:05:35', '::1', 2),
+(49, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '11:05:55', '::1', 2),
+(50, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-04', '11:11:49', '::1', 2),
+(51, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '11:12:11', '::1', 15),
+(52, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '11:47:04', '::1', 15),
+(53, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '11:47:11', '::1', 2),
+(54, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '13:08:29', '::1', 2),
+(55, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '13:11:06', '::1', 2),
+(56, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: jkl@gmail.com', '2019-08-04', '16:22:27', '::1', 24),
+(57, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: cc@gmail.com', '2019-08-04', '16:27:25', '::1', 25),
+(58, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-04', '17:46:40', '::1', 2),
+(59, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '17:46:46', '::1', 15),
+(60, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '17:47:04', '::1', 15),
+(61, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '17:47:49', '::1', 2),
+(62, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: luis20111944@gmail.com', '2019-08-04', '17:48:57', '::1', 26),
+(63, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: jm2796.jm@gmail.com', '2019-08-04', '17:53:02', '::1', 27),
+(64, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-04', '17:53:35', '::1', 2),
+(65, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '17:53:43', '::1', 15),
+(66, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '18:26:37', '::1', 15),
+(67, 'Inicio de sesion', 'El usuario con correo: maverick@gmail.com ha iniciado sesion', '2019-08-04', '18:26:43', '::1', 23),
+(68, 'Cierre de sesion', 'El usuario con correo: maverick@gmail.com ha cerrado sesion', '2019-08-04', '18:35:18', '::1', 23),
+(69, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '18:35:23', '::1', 2),
+(70, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: yound1996@gmail.com', '2019-08-04', '18:38:11', '::1', 28),
+(71, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: yound1996@gmail.com', '2019-08-04', '18:40:22', '::1', 29),
+(72, 'Nuevo registro', 'Se ha registrado un nuevo docente con correo: yound1996@gmail.com', '2019-08-04', '18:41:06', '::1', 30),
+(73, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '18:42:24', '::1', 2),
+(74, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '18:43:17', '::1', 2),
+(75, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '18:43:31', '::1', 2),
+(76, 'Cierre de sesion', 'El usuario con correo: asd@gmail.com ha cerrado sesion', '2019-08-04', '18:45:25', '::1', 2),
+(77, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '18:45:34', '::1', 15),
+(78, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '19:30:47', '::1', 15),
+(79, 'Inicio de sesion', 'El usuario con correo: yound1996@gmail.com ha iniciado sesion', '2019-08-04', '19:32:37', '::1', 30),
+(80, 'Cierre de sesion', 'El usuario con correo: yound1996@gmail.com ha cerrado sesion', '2019-08-04', '20:00:58', '::1', 30),
+(81, 'Inicio de sesion', 'El usuario con correo: kdakas@gmail.com ha iniciado sesion', '2019-08-04', '20:01:04', '::1', 15),
+(82, 'Cierre de sesion', 'El usuario con correo: kdakas@gmail.com ha cerrado sesion', '2019-08-04', '20:01:29', '::1', 15),
+(83, 'Inicio de sesion', 'El usuario con correo: asd@gmail.com ha iniciado sesion', '2019-08-04', '20:01:36', '::1', 2),
+(84, 'Eliminar producto', 'El usuario con correo:  ha eliminado un producto ', '2019-08-04', '20:48:22', '::1', 2);
 
 -- --------------------------------------------------------
 
@@ -347,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `tbl_recursosestudiantiles` (
   `asignaturaID` int(11) DEFAULT NULL,
   PRIMARY KEY (`recursoID`),
   KEY `asignaturaID` (`asignaturaID`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_recursosestudiantiles`
@@ -360,7 +353,9 @@ INSERT INTO `tbl_recursosestudiantiles` (`recursoID`, `Titulo`, `Descripcion`, `
 (20, 'archivo', 'algo', 'application/pdf', 93390, 'Maverick_Bustillo_Tarea2.pdf', 4),
 (21, 'dwed', 'adsda', 'application/x-zip-compressed', 21330, 'Plungin_MW.zip', 4),
 (22, 'dajskd', 'mmdkasd', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 1017177, 'BET.docx', 4),
-(23, 'xasmxlsx', 'mcxlal', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 16220, 'Gráfico Medición de la aceleración de la gravedad en la UNAH (1).xlsx', 4);
+(23, 'xasmxlsx', 'mcxlal', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 16220, 'Gráfico Medición de la aceleración de la gravedad en la UNAH (1).xlsx', 4),
+(24, 'archivo', 'descripcion', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 1017177, 'BET.docx', 1),
+(25, 'archivo', 'descripcion', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 194786, '7.2.2.6 Lab - Configuring and Modifying Standard IPv4 ACLs.docx', 1);
 
 -- --------------------------------------------------------
 
@@ -403,9 +398,6 @@ CREATE TABLE IF NOT EXISTS `tbl_seccionesxcurso` (
 --
 
 INSERT INTO `tbl_seccionesxcurso` (`SeccionID`, `CursoID`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -426,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sesion` (
 --
 
 INSERT INTO `tbl_sesion` (`UsuarioID`, `Estado`) VALUES
-(2, 0),
+(2, 1),
 (10, 0),
 (11, 0),
 (12, 0),
@@ -438,7 +430,14 @@ INSERT INTO `tbl_sesion` (`UsuarioID`, `Estado`) VALUES
 (20, 0),
 (21, 0),
 (22, 0),
-(23, 0);
+(23, 0),
+(24, 0),
+(25, 0),
+(26, 0),
+(27, 0),
+(28, 0),
+(29, 0),
+(30, 0);
 
 -- --------------------------------------------------------
 
@@ -473,11 +472,11 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   `usuarioID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) DEFAULT NULL,
   `apellido` varchar(20) DEFAULT NULL,
-  `correo` varchar(20) DEFAULT NULL,
+  `correo` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `Cedula` int(10) NOT NULL,
+  `Cedula` int(15) NOT NULL,
   `FechaNacimiento` date NOT NULL,
-  `telefono` int(8) NOT NULL,
+  `telefono` int(12) NOT NULL,
   `tipoUsuarioID` int(11) DEFAULT NULL,
   `DepartamentoID` int(11) DEFAULT NULL,
   `MunicipioID` int(11) DEFAULT NULL,
@@ -485,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   KEY `tipoUsuarioID` (`tipoUsuarioID`),
   KEY `DepartamentoID` (`DepartamentoID`),
   KEY `MunicipioID` (`MunicipioID`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_usuarios`
@@ -493,17 +492,16 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
 
 INSERT INTO `tbl_usuarios` (`usuarioID`, `nombre`, `apellido`, `correo`, `password`, `Cedula`, `FechaNacimiento`, `telefono`, `tipoUsuarioID`, `DepartamentoID`, `MunicipioID`) VALUES
 (2, 'Adan', 'Murillo', 'asd@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 801199604, '2019-07-27', 88888888, 1, NULL, NULL),
-(10, 'alan', 'sadk', 'alan@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 101010, '2019-07-16', 65656, 2, 2, 1),
 (9, 'Sdfjfs', 'Nkdsfk', 'jnkdj@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 121232, '2019-07-18', 2312123, 2, 1, 1),
-(16, 'Adan', 'Young', 'adan@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 21521231, '2019-07-26', 1542, 3, 1, 1),
 (11, 'Jsad', 'Dasj', 'ahsdj@gmail.hn', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 121542, '2019-07-09', 214545, 2, 1, 3),
 (12, 'Sldljh', 'Kdjka', 'hfdaskd@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 4545312, '2019-07-17', 1212154, 2, 1, 3),
 (13, 'Hfajkd', 'Jdakdj', 'akdja@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 54233, '2019-07-18', 11154223, 2, 1, 1),
 (14, 'Skjfjsk', 'Nsakdjk', 'kask@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 55412, '2019-07-18', 2154125, 2, 1, 3),
 (15, 'Jaakdj', 'Dnajsdnk', 'kdakas@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 21545, '2019-07-10', 1514513, 2, 1, 2),
-(21, 'Adan', 'Murillo', 'jm@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 11454, '1996-01-05', 511514, 3, 1, 2),
-(22, 'Luis', 'Irias', 'Luis@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 5565262, '2019-04-11', 51523, 3, 1, 2),
-(23, 'Maverick', 'Bustillo', 'maverick@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2151516, '2019-07-17', 15151521, 3, 1, 2);
+(24, 'Adan', 'Young', 'jkl@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2515215, '2019-08-08', 455456, 2, 1, 2),
+(26, 'Fernando', 'Irias', 'luis20111944@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 212112, '2019-08-21', 1212152, 3, 2, 2),
+(27, 'Josue', 'Young', 'jm2796.jm@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2322323, '2019-08-15', 12123232, 3, 1, 3),
+(30, 'Adan', 'Murillo', 'yound1996@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 21212, '2019-08-16', 12154154, 3, 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

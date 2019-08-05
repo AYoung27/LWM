@@ -33,3 +33,11 @@ function cargarDiv(divID, ruta) {
     },
   });
 }
+
+function eliminarEstudiante(usuarioID){
+      if (confirm("Realmente desea eliminar a este estudiante?")) {
+        window.location.href= "Acciones/eliminarEstudiantes.php?usuarioID="+usuarioID;
+        } else {
+
+      }
+}

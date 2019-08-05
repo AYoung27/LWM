@@ -29,7 +29,7 @@ session_start();
     					<td>'.$arreglo['apellido'].'</td>
                         <td>'.$arreglo['cedula'].'</td>
                         <td>'.$arreglo['telefono'].'</td>
-    					<td><a role="button"'.'class='.'"btn btn-block btn-primary mr-2 mb-2"'.'href="#"'.' onclick="modificar('.$arreglo["usuarioID"].')"><i class='.'"glyphicon glyphicon-pencil"'.'></i>&nbsp;Modificar</a><a role="button" class='.'"btn btn-danger btn-block mb-2"'.' href="#" onclick="eliminar('.$arreglo["usuarioID"].')"><i class='.'"glyphicon glyphicon-remove"'.'></i>&nbsp;Eliminar</a></td></tr>';
+    					<td><a role="button"'.'class='.'"btn btn-block btn-primary mr-2 mb-2"'.'href="#"'.' onclick="modificar('.$arreglo["usuarioID"].')"><i class='.'"glyphicon glyphicon-pencil"'.'></i>&nbsp;Modificar</a><a role="button" class='.'"btn btn-danger btn-block mb-2"'.' href="#" onclick="eliminarEstudiante('.$arreglo["usuarioID"].')"><i class='.'"glyphicon glyphicon-remove"'.'></i>&nbsp;Eliminar</a></td></tr>';
     	}
     	$salida.="</tbody></table>";
     }else{

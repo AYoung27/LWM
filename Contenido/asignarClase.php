@@ -21,24 +21,18 @@ if (empty($_SESSION)) {
 					<a class="nav-link" href="#AgregarDocente" onclick="cargarDiv('zonaContenido','Contenido/AgregarDocente.php')">Agregar Docente</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="#ModificarDocentes" aria-disabled="true">Modificar Docente</a>
+					<a class="nav-link " href="#ModificarDocentes" onclick="cargarDiv('zonaContenido','Contenido/modificarDocente.php')">Modificar Docente</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link " href="#AsignarClase" onclick="cargarDiv('zonaContenido','Contenido/AsignarClase.php')">Asignar clase</a>
+					<a class="nav-link disabled" href="#AsignarClase" aria-disabled="true" >Asignar clase</a>
 				</li>
 			</ul>
 		</div>
 		<div id="" class="container"><br>
 			<div class="container">
-						<label>Buscar un docente</label>
-						<div class="col-lg-12 mb-3">
-							<input type="text" name="srcDocente" id="srcDocente" class="form-control" placeholder="Buscar un docente" onkeyup="listar(this.value);">
-						</div>
+					<div class="col-lg-12 mb-3">
+						
+							
 					</div>
-					<hr>
+			</div>
 
-					<div id="Docente"></div>
-			
-
-		
-		

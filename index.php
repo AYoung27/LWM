@@ -59,11 +59,7 @@ if (empty($_SESSION)) {
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body">
-        <p class="text-white m-0">Estudiar y aprender para chepo nunca ser!</p>
-      </div>
-    </div>
+    <hr>
 
     <!-- Content Row -->
     <div class="row">
@@ -129,10 +125,22 @@ if (empty($_SESSION)) {
         </div>
         </div>
         </div>';
+
+        echo '
+        <div class="col-md-4 mb-5">
+        <div class="card h-100">
+        <div class="card-body">
+        <h2 align="center" class="card-title">Gestion de Cursos</h2> <br> <br>
+        <div align="center"> <img  src="Img/Tarjetas/T_Gestion4.png" height="auto" width="170px" style="font-size: 1em;" > </div>
+        <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+        </div>
+        <div class="card-footer">
+        <a href="GestionCursos.php" class="btn btn-primary btn-sm">More Info</a>
+        </div>
+        </div>
+        </div>';
       }
       ?>
-      <!-- /.col-md-4 -->
-
       <!-- /.row -->
 
     </div>

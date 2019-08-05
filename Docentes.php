@@ -11,11 +11,10 @@ $conexion->mysql_set_charset("utf8");
 	<link rel="stylesheet" type="text/css" href="Estilos/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="Estilos/fonts/awesome/css/all.css">
 	<link rel="icon" href="img/favicon3.png" >
-	<script src="Estilos/js/cargarContenido.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand pl-3" href="#"><img src="img/learn 1.png" height="40"></a>
+		<a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -53,7 +52,7 @@ $conexion->mysql_set_charset("utf8");
 							<a class="nav-link" href="#ModificarDocente" onclick="listar(''),cargarDiv('zonaContenido','Contenido/modificarDocente.php')" >Modificar docente</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#asignarClase" onclick="cargarDiv('zonaContenido','Contenido/gestionarProducto.php')">Asignar Clase</a>
+							<a class="nav-link" href="#asignarClase" onclick="cargarDiv('zonaContenido','Contenido/asignarClase.php')">Asignar Clase</a>
 						</li>
 					</ul>
 				</div>
@@ -144,6 +143,15 @@ $conexion->mysql_set_charset("utf8");
 		</div>
 		<!-- /.container -->
 	</footer>
+	<script type="text/javascript">
+		function eliminarDocente(usuarioID){
+      if (confirm("Realmente desea eliminar a este docente?")) {
+        window.location.href= "Acciones/eliminarDocentes.php?usuarioID="+usuarioID;
+        } else {
+
+      }
+	}
+	</script>
 	<script type="text/javascript" src="Estilos/js/docentes.js"></script>
 	<script src="Estilos/js/jquery.min.js"></script>
 	<script src="Estilos/js/bootstrap.min.js"></script>

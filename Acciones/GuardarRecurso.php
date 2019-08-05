@@ -35,6 +35,12 @@
 			$consulta = sprintf("INSERT INTO tbl_recursosEstudiantiles(titulo,descripcion,tipo,tamaño,nombreArchivo,asignaturaID) VALUES ('%s','%s','%s','%s','%s','%s')",$conexion->antiInyeccion($titulo),$conexion->antiInyeccion($descripcion),$conexion->antiInyeccion($tipo),$conexion->antiInyeccion($tamanio),$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($identificador));
 			$conexion->ejecutarconsulta($consulta);
 
+			
+			$consulta = "SELECT correo FROM tbl_usuarios, tbl_estudiantes,tbl_estudiantesxcurso,tbl_cursos, tbl_asignaturas WHERE tbl_usuarios.usuarioID = tbl_estudiantes.usuarioID AND tbl_estudiantesxcurso.estudianteID = tbl_estudiantes.EstudianteID AND tbl_estudiantesxcurso.CursoID = tbl_cursos.CursoID AND tbl_cursos.CursoID=tbl_asignaturas.CursoID AND tbl_asignaturas.asignaturaID=".$identificador;
+			$resultado=$conexion->ejecutarconsulta($consulta);
+
+			while ($arreglo=$resultado->fetch_array()) {
+				# code...
 			try {
 	    //Server settings
 	    		$mail->SMTPDebug = 0;                                       // Enable verbose debug output
@@ -48,24 +54,23 @@
 
 	    //Recipients
 	    		$mail->setFrom('youngadan27@gmail.com', 'Docente');
-	    		$mail->addAddress('youngadan27@gmail.com');     // Add a recipient
+	    		$mail->addAddress($arreglo['correo']);     // Add a recipient
 
 	    // Attachments
 	    // Content
 	    		$mail->isHTML(true);                                  // Set email format to HTML
-	    		$mail->Subject = 'este es el asunto';
-	    		$mail->Body    = 'Este es el mensaje ';
+	    		$mail->Subject = 'Recursos Estudiantiles';
+	    		$mail->Body    = 'Se ha agregado un nuevo archivo en la plataforma Learn With Me ';
 
 	    		$mail->send();
-	    		echo "<script>
-	    		alert('Se ha notificado a los estudiantes'); 
-	    		</script>";
+	    	
 			} catch (Exception $e) {
 				echo "<script>
 				alert('Mensaje no enviado "."{$mail->ErrorInfo}'); 
 				</script>";
 			}
 
+		}
 		}
 	}
 

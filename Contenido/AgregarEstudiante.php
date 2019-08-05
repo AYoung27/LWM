@@ -108,19 +108,6 @@ if (empty($_SESSION)) {
 											 ?>
 										</select>
 									</div>
-									<div class="col-lg-4">
-										<label>Jornada:</label>
-										<select class="custom-select form-control" name="slcJornada">
-											<option selected>Elija una jornada</option>
-											<?php 
-												$consulta="SELECT JornadaID,nombreJornada FROM tbl_jornadas";
-												$resultado=$conexion->ejecutarconsulta($consulta);
-												while($arreglo=$resultado->fetch_array()){
-													echo '<option value="'.$arreglo[JornadaID].'">'.$arreglo[nombreJornada]."</option>";
-												}
-											 ?>
-										</select>
-									</div>
 
 								</div>
 								<div class="row mb-4" >

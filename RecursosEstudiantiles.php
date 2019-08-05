@@ -40,7 +40,7 @@ if (empty($_SESSION)) {
 	<div class="container mt-5">
 		<?php
 		if($_SESSION['TipoUsuario']=='2'){
-			$consulta="SELECT nombre,apellido,nombreAsignatura, nombreCurso,nombreSeccion,nombreJornada FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_secciones,tbl_docentes, tbl_asignaturasxdocente, tbl_seccionesxcurso, tbl_jornadas,tbl_cursosxjornada WHERE tbl_usuarios.usuarioID=tbl_docentes.usuarioID and tbl_docentes.DocenteID=tbl_asignaturasxdocente.docenteID AND tbl_asignaturasxdocente.asignaturaID=tbl_asignaturas.asignaturaID AND tbl_asignaturas.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.SeccionID=tbl_secciones.SeccionID and tbl_cursosxjornada.CursoID=tbl_cursos.CursoID AND tbl_cursosxjornada.JornadaID=tbl_jornadas.JornadaID and tbl_docentes.DocenteID=".$_SESSION['Docente'];
+			$consulta="SELECT nombre,apellido,nombreAsignatura, nombreCurso,nombreSeccion FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_secciones,tbl_docentes, tbl_asignaturasxdocente, tbl_seccionesxcurso WHERE tbl_usuarios.usuarioID=tbl_docentes.usuarioID and tbl_docentes.DocenteID=tbl_asignaturasxdocente.docenteID AND tbl_asignaturasxdocente.asignaturaID=tbl_asignaturas.asignaturaID AND tbl_asignaturas.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.SeccionID=tbl_secciones.SeccionID and  tbl_docentes.DocenteID=".$_SESSION['Docente'];
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$iteracion=0;
 			while ($arreglo = $conexion->obtenerFila($resultado)) {
@@ -66,7 +66,7 @@ if (empty($_SESSION)) {
 				}
 			}
 		}elseif ($_SESSION['TipoUsuario']=='3') {
-			$consulta="SELECT nombre,apellido,nombreAsignatura, nombreCurso,nombreSeccion FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_secciones,tbl_estudiantes, tbl_estudiantesxcurso, tbl_seccionesxcurso, tbl_jornadas, tbl_cursosxjornada WHERE tbl_usuarios.usuarioID=tbl_estudiantes.usuarioID and tbl_estudiantes.EstudianteID=tbl_estudiantesxcurso.estudianteID AND tbl_estudiantesxcurso.CursoID=tbl_cursos.CursoID AND tbl_asignaturas.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.SeccionID=tbl_secciones.SeccionID and tbl_estudiantes.SeccionID=tbl_secciones.SeccionID and tbl_estudiantes.JornadaID=tbl_jornadas.JornadaID AND tbl_cursosxjornada.JornadaID=tbl_jornadas.JornadaID AND tbl_cursosxjornada.CursoID=tbl_cursos.CursoID AND tbl_estudiantes.EstudianteID=".$_SESSION['Estudiante'];
+			$consulta="SELECT nombre,apellido,nombreAsignatura, nombreCurso,nombreSeccion FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_secciones,tbl_estudiantes, tbl_estudiantesxcurso, tbl_seccionesxcurso WHERE tbl_usuarios.usuarioID=tbl_estudiantes.usuarioID and tbl_estudiantes.EstudianteID=tbl_estudiantesxcurso.estudianteID AND tbl_estudiantesxcurso.CursoID=tbl_cursos.CursoID AND tbl_asignaturas.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.CursoID=tbl_cursos.CursoID AND tbl_seccionesxcurso.SeccionID=tbl_secciones.SeccionID and tbl_estudiantes.SeccionID=tbl_secciones.SeccionID  AND tbl_estudiantes.EstudianteID=".$_SESSION['Estudiante'];
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$iteracion=0;
 			while ($arreglo = $conexion->obtenerFila($resultado)) {
