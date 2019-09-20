@@ -3,9 +3,6 @@ session_start();
 include("Clases/Conexion.php");
 $conexion = new Conexion();
 $conexion->mysql_set_charset("utf8");
-if (empty($_SESSION)) {
-	header('Location: Login.php');
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,18 +34,35 @@ if (empty($_SESSION)) {
 			</ul>
 		</div>
 	</nav>
-
-<footer class="py-5 mw-100 bg-dark">
-    <div class="container">
-      <p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<div class="container mt-5">
+		<h1 class="text-center mb-3">Gestion de Cursos</h1>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="text-center">Cursos</h3>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Gestionar cursos</h5>
+				<p class="card-text">Agregar o eliminar la informacion de un curso en especifico</p>
+				<a href="Cursos.php" class="btn btn-primary float-right">Go somewhere</a>
+			</div>
+		</div>
+		<div class="card mt-5 mb-5">
+			<div class="card-header">
+				<h3 class="text-center">Asignaturas</h3>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Gestionar Asignaturas</h5>
+				<p class="card-text">Agregar o eliminar la informacion de una asignatura en especifico</p>
+				<a href="Asignaturas.php" class="btn btn-primary float-right">Go somewhere</a>
+			</div>
+		</div>
+		<a href="index.php" ><button class=" btn btn-primary mb-2">Regresar</button></a>
+	</div>
+	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
+		<div class="container">
+			<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
+		</div>
+		<!-- /.container -->
+	</footer>
 </body>
-
 </html>

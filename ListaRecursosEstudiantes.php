@@ -57,21 +57,19 @@ if (empty($_SESSION)) {
 				   	<tr>
  						<th>Nombre</th>
  						<th>Descripcion</th>
- 						<th>Tipo de archivo</th>
  						<th>Opciones</th>
  					</tr>
  				</thead>
  				<tbody>
  					<?php 
- 						$consulta = "SELECT nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$arreglo['asignaturaID'];
+ 						$consulta = "SELECT recursoID, nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$arreglo['asignaturaID'];
  						$resultado = $conexion->ejecutarconsulta($consulta);
  						$bandera=mysqli_num_rows($resultado);
  						if($bandera!=0){
  							while($arreglo = $resultado->fetch_array()){
  								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
  								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td>'.$arreglo['tipo'].'</td>';
- 								 echo '<td><button class="btn btn-primary mr-2"><i class="glyphicon glyphicon-remove">Descargar</button></td></tr>';
+ 								 echo '<td><a class="btn btn-primary mr-2 text-white" href="Archivos/'.$arreglo['nombreArchivo'].'">Descargar</a></td></tr>';
 
  							}
  						}else{
@@ -89,7 +87,7 @@ if (empty($_SESSION)) {
 
 
 
-<footer class="py-5 mw-100 bg-dark" style="bottom: 0; position: absolute; width: 100%;">
+<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
 	<div class="container">
 		<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
 	</div>

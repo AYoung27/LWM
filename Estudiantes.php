@@ -14,7 +14,7 @@ $conexion->mysql_set_charset("utf8");
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand pl-3" href="#"><img src="img/learn 1.png" height="40"></a>
+		<a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

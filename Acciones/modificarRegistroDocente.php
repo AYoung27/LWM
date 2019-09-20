@@ -32,7 +32,7 @@ $resultado=$conexion->ejecutarconsulta($consultaB);
 $fecha=date("Y-m-d");
 $hora=date("G:i:s");
 
-$sql="SELECT Correo FROM tbl_usuario Where IDUsuario=".$_SESSION['ID'];
+$sql="SELECT Correo FROM tbl_usuarios Where IDUsuario=".$_SESSION['ID'];
 $resul=$conexion->ejecutarconsulta($sql);
 $correoAdmin=$conexion->obtenerfila($resul);
 

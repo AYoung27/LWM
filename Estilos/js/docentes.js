@@ -35,11 +35,5 @@ function cargarDiv(divID, ruta) {
   });
 }
 
-function eliminarDocente(usuarioID){
-      if (confirm("Realmente desea eliminar a este docente?")) {
-        window.location.href= "Acciones/eliminarDocentes.php?usuarioID="+usuarioID;
-        } else {
 
-      }
-}
 

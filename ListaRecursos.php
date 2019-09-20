@@ -43,21 +43,20 @@ if (empty($_SESSION)) {
 	<form enctype="multipart/form-data" action="Acciones/GuardarRecurso.php" method="post">
 		<div class="form-row mt-3">
 			<div class="col-lg-">
-				<label>Titulo</label>
+				<label>Titulo:</label>
 				<input type="text" name="txtTitulo" size="30" class="form-control">
 			</div>
 			<div class="col-lg-4">
-				<label>Descripcion</label>
+				<label>Descripcion:</label>
 				<input type="text" name="txtDescripcion" size="30" class="form-control">
 			</div>
-			
-		</div>
-		<div class="form-row mt-3">
 			<div class="col-lg-4">
 				<label>Seleccione un archivo:</label>
 				<input type="file" name="archivo" class="form-control">
 			</div>
+			
 		</div>
+
 		<div class="form-row mt-4 mb-4" >
 			<button class="btn btn-success ml-auto  " type="submit">Subir Archivo</button>
 			<?php 
@@ -81,7 +80,6 @@ if (empty($_SESSION)) {
 				   	<tr>
  						<th>Nombre</th>
  						<th>Descripcion</th>
- 						<th>Tipo de archivo</th>
  						<th>Opciones</th>
  					</tr>
  				</thead>
@@ -94,7 +92,6 @@ if (empty($_SESSION)) {
  							while($arreglo = $resultado->fetch_array()){
  								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
  								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td>'.$arreglo['tipo'].'</td>';
  								 echo '<td><button class="btn btn-primary mr-2"><i class="glyphicon glyphicon-remove">Descargar</button><button class="btn btn-danger"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
 
  							}
@@ -108,6 +105,7 @@ if (empty($_SESSION)) {
  			</div>		
 
 	</div>
+	<a href="RecursosEstudiantiles.php" ><button class=" btn btn-primary mb-2 mt-2" >Regresar</button></a>
 	</div>
 
 
