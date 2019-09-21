@@ -16,7 +16,7 @@ if (empty($_SESSION)) {
   <link rel="stylesheet" type="text/css" href="Estilos/fonts/awesome/css/all.css">
   <link rel="icon" href="img/favicon3.png" >
 </head>
-<body>
+<body style="background: #f8f8ff;">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,12 +62,12 @@ if (empty($_SESSION)) {
     <div class="card text-white bg-secondary my-5 py-4 text-center">
       <div class="card-body">
         <?php
-            $consulta="SELECT descripcion, nivelID FROM tbl_anuncios";
-            $resultado=$conexion->ejecutarconsulta($consulta);
-            while($arreglo=$resultado->fetch_array()){
-              echo '<i class="fa fa-warning"></i><p class="text-white ml-2">'.$arreglo['descripcion'].'</p>';
-            } 
-         ?>
+        $consulta="SELECT descripcion, nivelID FROM tbl_anuncios";
+        $resultado=$conexion->ejecutarconsulta($consulta);
+        while($arreglo=$resultado->fetch_array()){
+          echo '<i class="fa fa-warning"></i><p class="text-white ml-2">'.$arreglo['descripcion'].'</p>';
+        } 
+        ?>
         <p class="text-white m-0"></p>
       </div>
     </div>
@@ -151,48 +151,48 @@ if (empty($_SESSION)) {
         </div>
         </div>';
         
-       
+        
       }
       ?>
       <!-- /.row -->
 
     </div>
     <?php 
-        if ($_SESSION['TipoUsuario']=='1') {
-          $consulta="SELECT nivelID, Descripcion FROM tbl_nivelanuncio";
-          $resultado=$conexion->ejecutarconsulta($consulta);
-                    
+    if ($_SESSION['TipoUsuario']=='1') {
+      $consulta="SELECT nivelID, Descripcion FROM tbl_nivelanuncio";
+      $resultado=$conexion->ejecutarconsulta($consulta);
+      
           # code...
-           echo '<div class="container mb-5">
-           
-            <form action="Acciones/publicarAnuncio.php" method="POST">
-            <div class="row mb-3">
-              <div class="col-lg-10">
-                <label>Puedes publicar un anuncio aqui:</label>
-                <textarea rows = "3" name = "descripcion" class="form-control">
-                </textarea>
-              </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-4">
-                <label>Seleccione un nivel de prioridad para el anuncio:</label>
-                <select class="custom-select" name="slcNivel">
-                    <option selected>Elija un nivel</option>';
-                    while($arreglo=$resultado->fetch_array()){
-                        echo "<option value=".$arreglo['nivelID'].">".$arreglo['Descripcion']."</option>";
-                      }
-                    echo '
-                </select>
-               </div>
-            </div>
-            <div class="row ml-2">
-                <button type="submit" class="btn btn-primary">Publicar anuncio</button>
-            </div>   
-            </form>
-           
-        </div>';
-        }
-     ?>
+      echo '<div class="container mb-5">
+      
+      <form action="Acciones/publicarAnuncio.php" method="POST">
+      <div class="row mb-3">
+      <div class="col-lg-10">
+      <label>Puedes publicar un anuncio aqui:</label>
+      <textarea rows = "3" name = "descripcion" class="form-control">
+      </textarea>
+      </div>
+      </div>
+      <div class="row mb-3">
+      <div class="col-md-4">
+      <label>Seleccione un nivel de prioridad para el anuncio:</label>
+      <select class="custom-select" name="slcNivel">
+      <option selected>Elija un nivel</option>';
+      while($arreglo=$resultado->fetch_array()){
+        echo "<option value=".$arreglo['nivelID'].">".$arreglo['Descripcion']."</option>";
+      }
+      echo '
+      </select>
+      </div>
+      </div>
+      <div class="row ml-2">
+      <button type="submit" class="btn btn-primary">Publicar anuncio</button>
+      </div>   
+      </form>
+      
+      </div>';
+    }
+    ?>
   </div>
 
   <!-- /.container -->
