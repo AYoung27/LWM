@@ -80,11 +80,11 @@ if (empty($_SESSION)) {
         <div class="card h-100">
           <div class="card-body">
             <h2 align="center" class="card-title">Recursos Estudiantiles</h2> 
-            <div align="center" style="padding-top: 2px"> <img  src="Img/Tarjetas/T_Recursos2.png" height="auto" width="170px" style="font-size: 1em;" > </div>
+            <div align="center" style="padding-top: 2px"> <img  src="Img/Tarjetas/T_Recursos.png" height="auto" width="170px" style="font-size: 1em;" > </div>
             <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
           </div>
           <div class="card-footer">
-            <a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm">More Info</a>
+            <a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm" style="color: green">More Info</a>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ if (empty($_SESSION)) {
         <div class="card h-100">
           <div class="card-body">
             <h2 align="center" class="card-title">Asistencia</h2> <br> <br>
-            <div align="center"><img  src="Img/Tarjetas/T_Asistencia2.png" height="auto" width="170px" style="font-size: 1em;" ></div>
+            <div align="center"><img  src="Img/Tarjetas/T_Asistencia.png" height="auto" width="170px" style="font-size: 1em;" ></div>
             <p class="card-text"> <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
           </div>
           <div class="card-footer">
@@ -108,7 +108,7 @@ if (empty($_SESSION)) {
         <div class="card h-100">
           <div class="card-body">
             <h2 align="center" class="card-title">Calificaciones</h2> <br> <br>
-            <div align="center"><img  src="Img/Tarjetas/T_Calificaciones2.png" height="auto" width="170px" style="font-size: 1em;" ></div>
+            <div align="center"><img  src="Img/Tarjetas/T_Calificaciones.png" height="auto" width="170px" style="font-size: 1em;" ></div>
             <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
           </div>
           <div class="card-footer">
@@ -128,7 +128,7 @@ if (empty($_SESSION)) {
         <div class="card h-100">
         <div class="card-body">
         <h2 align="center" class="card-title">Gestion de Usuarios</h2> <br> <br>
-        <div align="center"> <img  src="Img/Tarjetas/T_Gestion2.png" height="auto" width="170px" style="font-size: 1em;" > </div>
+        <div align="center"> <img  src="Img/Tarjetas/T_Gestion.png" height="auto" width="170px" style="font-size: 1em;" > </div>
         <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
         </div>
         <div class="card-footer">
@@ -142,7 +142,7 @@ if (empty($_SESSION)) {
         <div class="card h-100">
         <div class="card-body">
         <h2 align="center" class="card-title">Gestion de Cursos</h2> <br> <br>
-        <div align="center"> <img  src="Img/Tarjetas/T_Gestion4.png" height="auto" width="170px" style="font-size: 1em;" > </div>
+        <div align="center"> <img  src="Img/Tarjetas/T_GestionC.png" height="auto" width="170px" style="font-size: 1em;" > </div>
         <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
         </div>
         <div class="card-footer">
