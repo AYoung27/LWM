@@ -138,22 +138,22 @@
                         <div class="row">
                             <div class="col-sm-6 col-md-12 col-lg-6">
                                 <div class="learning_member_text_iner">
-                                   <img src="Img/Car5.png" alt="">
-                                   <h4>Disponible <br> Siempre</h4>
+                                 <img src="Img/Car5.png" alt="">
+                                 <h4>Disponible <br> Siempre</h4>
 
-                               </div>
-                           </div>
-                           <div class="col-sm-6 col-md-12 col-lg-6">
+                             </div>
+                         </div>
+                         <div class="col-sm-6 col-md-12 col-lg-6">
                             <div class="learning_member_text_iner">
-                               <img src="Img/Car4.png" alt="">
-                               <h4>Archivos <br>Descargables</h4>
+                             <img src="Img/Car4.png" alt="">
+                             <h4>Archivos <br>Descargables</h4>
 
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="col-lg-6 col-md-6">
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="col-lg-6 col-md-6">
             <div class="learning_img">
                 <img src="img/advance_feature_img.png" alt="">
             </div>
@@ -174,12 +174,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="footer-text m-0">
-                      Learn With Me © 2019
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
+                     Copyright &copy; Learn With Me 2019
+                 </p>
+             </div>
+         </div>
+     </div>
+ </div>
 
 </div>
 </footer>

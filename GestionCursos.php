@@ -43,7 +43,7 @@ $conexion->mysql_set_charset("utf8");
 			<div class="card-body">
 				<h5 class="card-title">Gestionar cursos</h5>
 				<p class="card-text">Agregar o eliminar la informacion de un curso en especifico</p>
-				<a href="Cursos.php" class="btn btn-primary float-right">Go somewhere</a>
+				<a href="Cursos.php" class="btn btn-primary float-right">Ir</a>
 			</div>
 		</div>
 		<div class="card mt-5 mb-5">
@@ -53,14 +53,14 @@ $conexion->mysql_set_charset("utf8");
 			<div class="card-body">
 				<h5 class="card-title">Gestionar Asignaturas</h5>
 				<p class="card-text">Agregar o eliminar la informacion de una asignatura en especifico</p>
-				<a href="Asignaturas.php" class="btn btn-primary float-right">Go somewhere</a>
+				<a href="Asignaturas.php" class="btn btn-primary float-right">Ir</a>
 			</div>
 		</div>
 		<a href="index.php" ><button class=" btn btn-primary mb-2">Regresar</button></a>
 	</div>
 	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
 		<div class="container">
-			<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
+			<p class="text-center text-white">s</p>
 		</div>
 		<!-- /.container -->
 	</footer>
