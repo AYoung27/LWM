@@ -1,213 +1,202 @@
-<?php 
-session_start();
-include("Clases/Conexion.php");
-$conexion = new Conexion();
-$conexion->mysql_set_charset("utf8");
-if (empty($_SESSION)) {
-  header('Location: Login.php');
-}
-?>
+<!doctype html>
+<html lang="en">
 
-<!DOCTYPE html>
-<html>
 <head>
-	<title>Learn With Me</title>
-	<link rel="stylesheet" type="text/css" href="Estilos/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="Estilos/fonts/awesome/css/all.css">
-  <link rel="icon" href="img/favicon3.png" >
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Learn With Me</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Estilos/css/bootstrap.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="Estilos/css/themify-icons.css">
+    
+    <!-- style CSS -->
+    <link rel="stylesheet" href="Estilos/css/style.css">
 </head>
+
 <body style="background: #f8f8ff;">
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="indexp.php"> <img src="img/learn 1.png" alt="logo" width="115px;"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <ul class="navbar-nav mr-2 my-lg-0">
-        <li class="nav-item">
-          <a href="#"><span class="text-white pr-3"><i class="fas fa-bell"></i></span></a>
-        </li>
-        <li class="nav-item">
-          <a href="#"><span class="text-white pr-3"><i class="fas fa-user"></i></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active p-0" href="Acciones/CerrarSesion.php">Salir</a>
-        </li>
-      </ul>
+                    <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav align-items-center" ">
+
+                        <li class="nav-item" >
+                            <a class="nav-link" href="indexp.php" style="color:#f8f8ff";>Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login.php" style="color:#f8f8ff";>Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Registro.php" style="color:#f8f8ff";>Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
-  </nav>
+</div>
+</header>
+<!-- Header part end-->
 
-  <!-- Page Content -->
-  <div class="container">
-
-    <!-- Heading Row -->
-    <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="img/ColegioLogo2.png" style="height: 230px;">
-      </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        <h1 class="font-weight-light">Instituto Tegucigalpa </h1>
-        <p>Reseña: <br> Esta Institutcion fue creada en 1990 , y se encuentra ubicada
-        en el centro de Tegucigalpa</p>
-      </div>
-      <!-- /.col-md-4 -->
-    </div>
-    <!-- /.row -->
-
-    <!-- Call to Action Well -->
-
-    <div class="alert alert-primary  my-5 py-4 text-center" role="alert" >
-      <?php
-      $consulta="SELECT descripcion, nivelID FROM tbl_anuncios";
-      $resultado=$conexion->ejecutarconsulta($consulta);
-      while($arreglo=$resultado->fetch_array()){
-        echo '<i class="fa fa-warning"></i><p class="text-black ml-2">'.$arreglo['descripcion'].'</p>';
-      } 
-      ?>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 align="center" class="card-title">Recursos Estudiantiles</h2> 
-            <div align="center" style="padding-top: 2px"> <img  src="Img/Tarjetas/T_Recursos.png" height="auto" width="170px" style="font-size: 1em;" > </div>
-            <p class="card-text" style="text-align: justify;"><br>En este espacio se encuentra todos los recursos estudiantiles subidos por el maestro en sus respectivas asignaturas. <br>¡Tambien se puede descargar contenido para poder leer offline!</p>
-          </div>
-          <div class="card-footer">
-            <a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm">Entrar</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 align="center" class="card-title">Asistencia</h2> <br> <br>
-            <div align="center"><img  src="Img/Tarjetas/T_Asistencia.png" height="auto" width="170px" style="font-size: 1em;" ></div>
-            <p class="card-text" style="text-align: justify;"> <br> ¿Tienes problemas para poder usar algunas funciones? Entra aquí para recibir asistencia de como usar nuestros servicios. <br> ¡Nada es mejor que LWM! </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Entrar</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 align="center" class="card-title">Calificaciones</h2> <br> <br>
-            <div align="center"><img  src="Img/Tarjetas/T_Calificaciones.png" height="auto" width="170px" style="font-size: 1em;" ></div>
-            <p class="card-text" style="text-align: justify;"><br>En este espacio se encuentran las calificaciones de alumnos en sus respectivas materias. <br> ¡Nada es mas fácil que usar LWM para el seguimiento de las calificaciones!</p>
-          </div>
-          <div class="card-footer">
-            <a href="Calificaciones.php" class="btn btn-primary btn-sm">Entrar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-
-      <!-- /.col-md-4 -->
-      <?php 
-      if ($_SESSION['TipoUsuario']=='1') {
-        # code...
-        echo '
-        <div class="col-md-4 mb-5">
-        <div class="card h-100">
-        <div class="card-body">
-        <h2 align="center" class="card-title">Gestion de Usuarios</h2> <br> <br>
-        <div align="center"> <img  src="Img/Tarjetas/T_Gestion.png" height="auto" width="170px" style="font-size: 1em;" > </div>
-        <p class="card-text" style="text-align: justify;"><br>Aqui se puede gestionar los usuarios docentes y alumnos de la institucion.</p>
-        </div>
-        <div class="card-footer">
-        <a href="GestionUsuario.php" class="btn btn-primary btn-sm">Entrar</a>
-        </div>
-        </div>
-        </div>';
-
-        echo '
-        <div class="col-md-4 mb-5">
-        <div class="card h-100">
-        <div class="card-body">
-        <h2 align="center" class="card-title">Gestion de Cursos</h2> <br> <br>
-        <div align="center"> <img  src="Img/Tarjetas/T_GestionC.png" height="auto" width="170px" style="font-size: 1em;" > </div>
-        <p class="card-text" style="text-align: justify;"><br>Aqui se puede gestionar los cursos. <br>¡Entra ahora y crea un nuevo curso del instituto!</p>
-        </div>
-        <div class="card-footer">
-        <a href="GestionCursos.php" class="btn btn-primary btn-sm">Entrar</a>
-        </div>
-        </div>
-        </div>';
-
-
-      }
-      ?>
-      <!-- /.row -->
-
-    </div>
-    <?php 
-    if ($_SESSION['TipoUsuario']=='1') {
-      $consulta="SELECT nivelID, Descripcion FROM tbl_nivelanuncio";
-      $resultado=$conexion->ejecutarconsulta($consulta);
-
-          # code...
-      echo '<div class="container mb-5">
-
-      <form action="Acciones/publicarAnuncio.php" method="POST">
-      <div class="row mb-3">
-      <div class="col-lg-10">
-      <label>Puedes publicar un anuncio aqui:</label>
-      <textarea rows = "3" name = "descripcion" class="form-control">
-      </textarea>
-      </div>
-      </div>
-      <div class="row mb-3">
-      <div class="col-md-4">
-      <label>Seleccione un nivel de prioridad para el anuncio:</label>
-      <select class="custom-select" name="slcNivel">
-      <option selected>Elija un nivel</option>';
-      while($arreglo=$resultado->fetch_array()){
-        echo "<option value=".$arreglo['nivelID'].">".$arreglo['Descripcion']."</option>";
-      }
-      echo '
-      </select>
-      </div>
-      </div>
-      <div class="row ml-2">
-      <button type="submit" class="btn btn-primary">Publicar anuncio</button>
-      </div>   
-      </form>
-
-      </div>';
-    }
-    ?>
-  </div>
-
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 mw-100 bg-dark">
+<!-- banner part start-->
+<section class="banner_part">
     <div class="container">
-      <p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-xl-6">
+                <div class="banner_text">
+                    <div class="banner_text_iner" >
+                        <h5>¿Sabias que..?</h5>
+                        <h1>Un Aula esta a un clic de distancia</h1>
+                        <p>Learn With me es una plataforma estudiantil donde maestros  alumnos tendrán su propia aula virtual.  </p>
+                        <a href="#" class="btn_1">Registrar Instituto ahora </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.container -->
-  </footer>
+</section>
+<!-- banner part start-->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- feature_part start-->
+<section class="feature_part" style="padding-top: 0em;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-xl-3 align-self-center">
+                <div class="single_feature_text ">
+                    <h2>LWM es <br> Increíble</h2>
+                    <p>Learn With Cuenta con las Siguientes Características </p>
 
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part">
+                        <span class="single_feature_icon"><img src="Img/Car2.png" alt=""></span>
+                        <h4>Recursos Estudiantiles</h4>
+                        <p>Con LWM los recursos están al alcance de los alumnos , de forma ordenada y clasificada por asignatura. <br>   &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="single_feature">
+                        <div class="single_feature_part single_feature_part_2">
+                            <span class="single_service_icon style_icon"> <img src="Img/Car3.png" alt=""></span>
+                            <h4>Notificaciones vía &nbsp;&nbsp; e-mail</h4>
+                            <p>Con LWM ¡no se volverán a perder recursos! notificamos vía e-mail cada vez que se sube una asignación o recurso a un aula matriculada por el estudiante.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="single_feature">
+                        <div class="single_feature_part">
+                            <span class="single_feature_icon"> <img src="Img/Car1.png" alt=""></span>
+                            <h4>Calificaciones en linea </h4>
+                            <p>Con LWM ahora las calificaciones esta en linea
+                                para que padres y alumnos puedan acceder a ella
+                                de una forma rápida, cómoda y sencilla.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- upcoming_event part start-->
+
+
+
+
+
+    <!-- learning part start-->
+    <section class="advance_feature learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-xl-stretch">
+                <div class="col-md-6 col-lg-6">
+                    <div class="learning_member_text">
+                        <h5>LWM</h5>
+                        <h2>Puedes Acceder a nuestro sitio 24/7</h2>
+                        <p>Learn With Me esta disponible a toda hora en todo momento
+                            desde cualquier lugar. accede al contenido que ha subido tu profesor, puedes descargarlo también. 
+                            <br><br>¡Con LWM todo esta a un clic de distancia! <br> <br>
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                 <img src="Img/Car5.png" alt="">
+                                 <h4>Disponible <br> Siempre</h4>
+
+                             </div>
+                         </div>
+                         <div class="col-sm-6 col-md-12 col-lg-6">
+                            <div class="learning_member_text_iner">
+                             <img src="Img/Car4.png" alt="">
+                             <h4>Archivos <br>Descargables</h4>
+
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="col-lg-6 col-md-6">
+            <div class="learning_img">
+                <img src="img/advance_feature_img.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- learning part end-->
+
+
+
+
+<!-- footer part start-->
+<footer class="footer-area"  style="padding-top: 0em;>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="copyright_part_text text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="footer-text m-0">
+                     Copyright &copy; Learn With Me 2019
+                 </p>
+             </div>
+         </div>
+     </div>
+ </div>
+
+</div>
+</footer>
+<!-- footer part end-->
+
+<!-- jquery plugins here-->
+<!-- jquery -->
+<script src="Estilos/js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="Estilos/js/popper.min.js"></script>
+
+
+<!-- easing js -->
+<script src="Estilos/js/jquery.magnific-popup.js"></script>
+
+<!-- custom js -->
+<script src="Estilos/js/custom.js"></script>
 </body>
 
 </html>

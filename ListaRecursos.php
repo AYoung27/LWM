@@ -17,7 +17,7 @@ if (empty($_SESSION)) {
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
+		<a class="navbar-brand pl-3" href="Principal.php"><img src="img/learn 1.png" height="40"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -25,12 +25,6 @@ if (empty($_SESSION)) {
 			<ul class="navbar-nav mr-auto">
 			</ul>
 			<ul class="navbar-nav mr-2 my-lg-0">
-				<li class="nav-item">
-					<a href="#"><span class="text-white pr-3"><i class="fas fa-bell"></i></span></a>
-				</li>
-				<li class="nav-item">
-					<a href="#"><span class="text-white pr-3"><i class="fas fa-user"></i></span></a>
-				</li>
 				<li class="nav-item">
 					<a class="nav-link active p-0" href="Acciones/CerrarSesion.php">Salir</a>
 				</li>
@@ -42,29 +36,29 @@ if (empty($_SESSION)) {
 		<h3 class="mt-3 text-center mb-2">Recursos Estudiantiles</h3>
 	<form enctype="multipart/form-data" action="Acciones/GuardarRecurso.php" method="post">
 		<div class="form-row mt-3">
-			<div class="col-lg-">
+			<div class="col-lg-4">
 				<label>Titulo:</label>
 				<input type="text" name="txtTitulo" size="30" class="form-control">
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-6">
 				<label>Descripcion:</label>
 				<input type="text" name="txtDescripcion" size="30" class="form-control">
 			</div>
-			<div class="col-lg-4">
-				<label>Seleccione un archivo:</label>
-				<input type="file" name="archivo" class="form-control">
-			</div>
 			
 		</div>
-		<?php  
-			$asignaturaID=$_GET['AsignaturaID'];
-		?>
-
-		<div class="form-row mt-4 mb-4" >
-
-			<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $asignaturaID;?>" style="display: none;">
-			<button class="btn btn-success ml-auto  " type="submit">Subir Archivo</button>
-		</div>
+		<div class="form-row mb-3">
+				<div class="col-lg-4">
+					<label>Seleccione un archivo:</label>
+					<input type="file" name="archivo" class="form-control">
+				</div>
+				<?php  
+			$asignaturaID=$_GET['AsignaturaID'];?>
+				<div class="col-lg-4 mt-4">
+					<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $asignaturaID;?>" style="display: none;">
+					<button class="btn btn-success ml-auto  " type="submit">Subir Archivo</button>
+				</div>	
+			</div>
+		
 	</form> 
 
 

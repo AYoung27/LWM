@@ -82,7 +82,7 @@
 					
 					
 					mysqli_close($conexion->getLink());
-					header('Location: ../index.php');
+					header('Location: ../Principal.php');
 					
 				} else {
 					mysqli_close($conexion->getLink());

@@ -32,7 +32,7 @@ if (empty($_SESSION)) {
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
+    <a class="navbar-brand pl-3" href="#"><img src="img/learn 1.png" height="40"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,12 +40,6 @@ if (empty($_SESSION)) {
       <ul class="navbar-nav mr-auto">
       </ul>
       <ul class="navbar-nav mr-2 my-lg-0">
-        <li class="nav-item">
-          <a href="#"><span class="text-white pr-3"><i class="fas fa-bell"></i></span></a>
-        </li>
-        <li class="nav-item">
-          <a href="#"><span class="text-white pr-3"><i class="fas fa-user"></i></span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link active p-0" href="Acciones/CerrarSesion.php">Salir</a>
         </li>
@@ -83,7 +77,7 @@ if (empty($_SESSION)) {
                 <p class="card-text text-center">Numero de maestros: '.$arreglo['numeroDocentes'].'</p>
                 <p class="card-text text-center">Numero de Cursos: '.$arreglo['numeroCursos'].'</p>
                 <p class="card-text text-center">Numero de Alumnos por curso: '.$arreglo['numeroAlumnos'].'</p>
-                <a href="Acciones/actualizarPlan.php?'.$arreglo['PlanID'].'" class="btn btn-primary" style="border-radius: 20px;">Seleccionar plan</a>
+                <a href="Acciones/actualizarPlan.php?PlanID='.$arreglo['PlanID'].'" class="btn btn-primary" style="border-radius: 20px;">Seleccionar plan</a>
            </div>
         </div>
       </div>';
@@ -92,7 +86,7 @@ if (empty($_SESSION)) {
     </div>
     <div class="row mb-5">
       <div class="col-lg-12 text-center">
-        <a class="btn btn-primary" href="Acciones/CerrarSesion.php" style="border-radius: 20px;">Seleccionar plan en otro Momento</a>
+        <a class="btn btn-primary" href="Principal.php" style="border-radius: 20px;">Seleccionar plan en otro Momento</a>
       </div>
         
     </div>

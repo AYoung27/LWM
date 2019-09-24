@@ -11,5 +11,5 @@ $consultaB = sprintf("INSERT INTO tbl_log(evento, descripcion, fecha, hora,direc
 $conexion->ejecutarconsulta($consultaB);
 mysqli_close($conexion);
 session_destroy();
-header('Location: ../indexp.php');
+header('Location: ../index.php');
 ?>
