@@ -32,11 +32,11 @@
 			$identificador =$_POST["txtIdentificador"];
 			$titulo=$_POST["txtTitulo"];
 
-			$consulta = sprintf("INSERT INTO tbl_recursosEstudiantiles(titulo,descripcion,tipo,tamaño,nombreArchivo,asignaturaID) VALUES ('%s','%s','%s','%s','%s','%s')",$conexion->antiInyeccion($titulo),$conexion->antiInyeccion($descripcion),$conexion->antiInyeccion($tipo),$conexion->antiInyeccion($tamanio),$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($identificador));
+			$consulta = sprintf("INSERT INTO tbl_recursosEstudiantiles(titulo,descripcion,tipo,tamaño,nombreArchivo,asignaturaID,institucionID) VALUES ('%s','%s','%s','%s','%s','%s','%s')",$conexion->antiInyeccion($titulo),$conexion->antiInyeccion($descripcion),$conexion->antiInyeccion($tipo),$conexion->antiInyeccion($tamanio),$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($identificador),$conexion->antiInyeccion($_SESSION['Institucion']));
 			$conexion->ejecutarconsulta($consulta);
 
 			
-			$consulta = "SELECT correo FROM tbl_usuarios, tbl_estudiantes,tbl_estudiantesxcurso,tbl_cursos, tbl_asignaturas WHERE tbl_usuarios.usuarioID = tbl_estudiantes.usuarioID AND tbl_estudiantesxcurso.estudianteID = tbl_estudiantes.EstudianteID AND tbl_estudiantesxcurso.CursoID = tbl_cursos.CursoID AND tbl_cursos.CursoID=tbl_asignaturas.CursoID AND tbl_asignaturas.asignaturaID=".$identificador;
+			$consulta = "SELECT correo FROM tbl_usuarios, tbl_estudiantes,tbl_estudiantesxcurso,tbl_cursos, tbl_asignaturas,tbl_instituciones WHERE tbl_usuarios.usuarioID = tbl_estudiantes.usuarioID AND tbl_estudiantesxcurso.estudianteID = tbl_estudiantes.EstudianteID AND tbl_estudiantesxcurso.CursoID = tbl_cursos.CursoID AND tbl_cursos.CursoID=tbl_asignaturas.CursoID AND tbl_asignaturas.institucionID=tbl_instituciones.institucionID and tbl_estudiantes.institucionID=tbl_instituciones.institucionID and tbl_cursos.institucionID=tbl_instituciones.institucionID and tbl_estudiantes.institucionID=".$_SESSION['Institucion']." and tbl_asignaturas.asignaturaID=".$identificador;
 			$resultado=$conexion->ejecutarconsulta($consulta);
 
 			while ($arreglo=$resultado->fetch_array()) {

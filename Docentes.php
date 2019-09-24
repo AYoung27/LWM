@@ -51,9 +51,7 @@ $conexion->mysql_set_charset("utf8");
 						<li class="nav-item">
 							<a class="nav-link" href="#ModificarDocente" onclick="listar(''),cargarDiv('zonaContenido','Contenido/modificarDocente.php')" >Modificar docente</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#asignarClase" onclick="cargarDiv('zonaContenido','Contenido/asignarClase.php')">Asignar Clase</a>
-						</li>
+
 					</ul>
 				</div>
 				<div class="tab-content">

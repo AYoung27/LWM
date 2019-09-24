@@ -84,8 +84,10 @@ if (empty($_SESSION)) {
 
 			</div>';
 
-			$consulta="SELECT parcialID, nombreParcial From tbl_parciales";
-			$resultado=$conexion->ejecutarconsulta($consulta);
+			$array=array(1=>"Primer Parcial",
+					2=>"Segundo Parcial",
+					3=>"Tercer Parcial",
+					4=>"Cuarto Parcial");
 
 			echo '<div>
 				<form action="Acciones/subirNota.php" method="POST">
@@ -113,10 +115,10 @@ if (empty($_SESSION)) {
 							<label>Selecciona un parcial:</label>
 							<select class="custom-select" name="slcParcial">
 								<option selected>Elige un parcial</option>';
-							while ($arreglo=$resultado->fetch_array()) {
-									# code...
-									echo '<option value="'.$arreglo['parcialID'].'">'.$arreglo['nombreParcial'].'</option>';
-								}	
+							for ($i=1; $i <=4 ; $i++) { 
+								# code...
+								echo '<option value="'.$i.'">'.$array[$i].'</option>';
+							}		
 							echo '</select>
 							</div>
 						</div>

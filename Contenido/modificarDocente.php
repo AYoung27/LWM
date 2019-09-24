@@ -23,9 +23,6 @@ if (empty($_SESSION)) {
 				<li class="nav-item">
 					<a class="nav-link disabled" href="#ModificarDocentes" aria-disabled="true">Modificar Docente</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="#AsignarClase" onclick="cargarDiv('zonaContenido','Contenido/AsignarClase.php')">Asignar clase</a>
-				</li>
 			</ul>
 		</div>
 		<div id="" class="container"><br>

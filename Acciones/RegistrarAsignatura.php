@@ -13,10 +13,10 @@
 
 
 
-			$consulta=sprintf("INSERT INTO tbl_Asignaturas(nombreAsignatura,CursoID) VALUES ('%s','%s')",$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($curso));
+			$consulta=sprintf("INSERT INTO tbl_Asignaturas(nombreAsignatura,CursoID,institucionID) VALUES ('%s','%s','%s')",$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($curso),$conexion->antiInyeccion($_SESSION['Institucion']));
 			$conexion->ejecutarconsulta($consulta);
 
-			$consulta="SELECT asignaturaID from tbl_asignaturas WHERE cursoID=".$curso." and nombreAsignatura="."'".$nombre."'";
+			$consulta=sprintf("SELECT asignaturaID from tbl_asignaturas WHERE cursoID='%s' and nombreAsignatura='%s' and institucionID='%s'",$conexion->antiInyeccion($curso),$conexion->antiInyeccion($nombre),$conexion->antiInyeccion($_SESSION['Institucion']));
 			$resultado=$conexion->ejecutarconsulta($consulta);
 
 			$asignaturaID=$resultado->fetch_assoc()['asignaturaID'];

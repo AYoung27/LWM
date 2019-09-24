@@ -83,7 +83,7 @@ if (empty($_SESSION)) {
             <p class="card-text" style="text-align: justify;"><br>En este espacio se encuentra todos los recursos estudiantiles subidos por el maestro en sus respectivas asignaturas. <br>¡Tambien se puede descargar contenido para poder leer offline!</p>
           </div>
           <div class="card-footer">
-            <a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm" style="color: green">Entrar</a>
+            <a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm">Entrar</a>
           </div>
         </div>
       </div>

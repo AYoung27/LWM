@@ -62,58 +62,39 @@ if (empty($_SESSION)) {
   </div>
   <div class="container mt-5">
 
+    <?php 
+      $consulta="SELECT PlanID,NombrePlan, Precio, numeroCursos, numeroSeccionesCurso, numeroAlumnos, numeroDocentes FROM tbl_planes WHERE precio=20 or precio=30 or precio=70";
+      $resultado=$conexion->ejecutarconsulta($consulta);
+     ?>
     <!-- Heading Row -->
     <div class="row mb-5">
-      <div class="col-lg-4" id="divCard">
-        <div class="card text-white bg-info mb-3" style="max-width: 21rem;">
-            <div class="card-header text-center">Basico</div>
+      <?php
+      while ($arreglo=$resultado->fetch_array()) {
+          # code...    
+     echo '<div class="col-lg-4" id="divCard">
+        <div class="card bg-light mb-3" style="max-width: 21rem;">
+            <div class="card-header text-center">'.$arreglo['NombrePlan'].'</div>
             <div class="card-body text-center">
                 <p class="m-0 text-center" style="font-size: 12px;">Detalles del plan</p>
-                <p class="card-text text-center" style="font-size: 50px;">$20</p>
+                <p class="card-text text-center" style="font-size: 50px;">$'.$arreglo['Precio'].'</p>
                 <p class="card-text text-center">Recursos Estudiantiles: SI</p>
                 <p class="card-text text-center">Notificaciones via email: SI</p>
                 <p class="card-text text-center">Calificaciones: SI</p>
-                <p class="card-text text-center">Numero de maestros: 4</p>
-                <p class="card-text text-center">Numero de Cursos: 2</p>
-                <p class="card-text text-center">Numero de Alumnos por curso: 50</p>
-                <a href="#" class="btn btn-light" style="border-radius: 20px;">Seleccionar plan</a>
+                <p class="card-text text-center">Numero de maestros: '.$arreglo['numeroDocentes'].'</p>
+                <p class="card-text text-center">Numero de Cursos: '.$arreglo['numeroCursos'].'</p>
+                <p class="card-text text-center">Numero de Alumnos por curso: '.$arreglo['numeroAlumnos'].'</p>
+                <a href="Acciones/actualizarPlan.php?'.$arreglo['PlanID'].'" class="btn btn-primary" style="border-radius: 20px;">Seleccionar plan</a>
            </div>
         </div>
+      </div>';
+      }
+      ?>
+    </div>
+    <div class="row mb-5">
+      <div class="col-lg-12 text-center">
+        <a class="btn btn-primary" href="Acciones/CerrarSesion.php" style="border-radius: 20px;">Seleccionar plan en otro Momento</a>
       </div>
-      
-      <div class="col-lg-4" id="divCard">
-        <div class="card text-white bg-success mb-3" style="max-width: 21rem;">
-            <div class="card-header text-center">Avanzado</div>
-            <div class="card-body text-center">
-                <p class="m-0 text-center" style="font-size: 12px;">Detalles del plan</p>
-                <p class="card-text text-center" style="font-size: 50px;">$30</p>
-                <p class="card-text text-center">Recursos Estudiantiles: SI</p>
-                <p class="card-text text-center">Notificaciones via email: SI</p>
-                <p class="card-text text-center">Calificaciones: SI</p>
-                <p class="card-text text-center">Numero de maestros: 6</p>
-                <p class="card-text text-center">Numero de Cursos: 2</p>
-                <p class="card-text text-center">Numero de Alumnos por curso: 50</p>
-                <a href="#" class="btn btn-light" style="border-radius: 20px;">Seleccionar plan</a>
-           </div>
-        </div>
-      </div>
-      <div class="col-lg-4" id="divCard">
-        <div class="card text-white bg-danger mb-3" style="max-width: 21rem;">
-            <div class="card-header text-center">Pro</div>
-            <div class="card-body text-center">
-                <p class="m-0 text-center" style="font-size: 12px;">Detalles del plan</p>
-                <p class="card-text text-center" style="font-size: 50px;">$100</p>
-                <p class="card-text text-center">Recursos Estudiantiles: SI</p>
-                <p class="card-text text-center">Notificaciones via email: SI</p>
-                <p class="card-text text-center">Calificaciones: SI</p>
-                <p class="card-text text-center">Numero de maestros: 10</p>
-                <p class="card-text text-center">Numero de Cursos: 2</p>
-                <p class="card-text text-center">Numero de Alumnos por curso: 50</p>
-                <a href="#" class="btn btn-light" style="border-radius: 20px;">Seleccionar plan</a>
-           </div>
-         </div>
         
-      </div>
     </div>
   </div>
   <!-- /.container -->

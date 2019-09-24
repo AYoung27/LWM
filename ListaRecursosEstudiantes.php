@@ -42,14 +42,7 @@ if (empty($_SESSION)) {
 		<h3 class="mt-3 text-center mb-2">Recursos Estudiantiles</h3>
 	
 			<?php 
-				$nombre=$_GET['nombreAsignatura'];
-				$consulta = "SELECT asignaturaID from tbl_asignaturas where nombreAsignatura='".$nombre."'";
-				$resultado = $conexion->ejecutarconsulta($consulta);
-				$bandera = mysqli_num_rows($resultado);
-				if($bandera!=0){
-					$arreglo = $resultado->fetch_array(); 
-				}
-			?>
+				$AsignaturaID=$_GET['AsignaturaID'];			?>
 	
 			<div class="col-md-12 table-responsive">
 				<table class="table table-bordered">
@@ -62,7 +55,7 @@ if (empty($_SESSION)) {
  				</thead>
  				<tbody>
  					<?php 
- 						$consulta = "SELECT recursoID, nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$arreglo['asignaturaID'];
+ 						$consulta = "SELECT recursoID, nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$AsignaturaID;
  						$resultado = $conexion->ejecutarconsulta($consulta);
  						$bandera=mysqli_num_rows($resultado);
  						if($bandera!=0){

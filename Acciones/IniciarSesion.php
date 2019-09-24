@@ -48,17 +48,27 @@
 					$_SESSION['Nombre']=$conexion->ejecutarconsulta($consulta)->fetch_assoc()['nombre'];
 					$_SESSION['Apellido']=$conexion->ejecutarconsulta($consulta)->fetch_assoc()['apellido'];
 
-					#	Verificacion del tipo de usuario 
-					if ($_SESSION['TipoUsuario'] == '2') {
-						
-						#	Consulta para obtener el IDProveedor
+					#	Verificacion del tipo de usuario
+					if ($_SESSION['TipoUsuario']=='1') {
+					 	# code...
+					 	$consultaInstitucion="SELECT institucionID from tbl_instituciones where usuarioID=".$_SESSION['ID'];
+					 	$_SESSION['Institucion']=$conexion->ejecutarconsulta($consultaInstitucion)->fetch_assoc()['institucionID'];
+					 }elseif ($_SESSION['TipoUsuario'] == '2') {
+					
 						$consultaDocente = sprintf("SELECT docenteID FROM tbl_docentes WHERE usuarioID = '%s'", $conexion->antiInyeccion($_SESSION['ID']));
-
-						#	Almacenamiento en la variable $_SESSION
 						$_SESSION['Docente'] = $conexion->ejecutarconsulta($consultaDocente)->fetch_assoc()['docenteID'];
+
+						$consulta="SELECT institucionID FROM tbl_docentes, tbl_usuarios WHERE tbl_usuarios.usuarioID=tbl_docentes.usuarioID and tbl_docentes.usuarioID=".$_SESSION['ID'];
+						$resultado=$conexion->ejecutarconsulta($consulta);
+						$_SESSION['Institucion']=$resultado->fetch_assoc()['institucionID'];
 					}elseif ($_SESSION['TipoUsuario']== '3') {
+
 						$consultaEstudiante = sprintf("SELECT estudianteID FROM tbl_estudiantes WHERE usuarioID = '%s'", $conexion->antiInyeccion($_SESSION['ID']));
 						$_SESSION['Estudiante']=$conexion->ejecutarconsulta($consultaEstudiante)->fetch_assoc()['estudianteID'];
+
+						$consulta="SELECT institucionID FROM tbl_estudiantes, tbl_usuarios WHERE tbl_usuarios.usuarioID=tbl_estudiantes.usuarioID and tbl_estudiantes.usuarioID=".$_SESSION['ID'];
+						$resultado=$conexion->ejecutarconsulta($consulta);
+						$_SESSION['Institucion']=$resultado->fetch_assoc()['institucionID'];
 					}
 
 					#	Establecer el nuevo estado del usuario como conectado

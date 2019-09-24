@@ -76,7 +76,7 @@ if (empty($_SESSION)) {
 
 			</div>';
 
-			$consulta="SELECT tbl_estudiantes.EstudianteID,nombre,apellido, nombreCurso, nombreSeccion,nombreAsignatura FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_estudiantesxcurso,tbl_estudiantes,tbl_secciones,tbl_seccionesxcurso WHERE tbl_usuarios.usuarioID = tbl_estudiantes.usuarioID AND tbl_estudiantes.EstudianteID=tbl_estudiantesxcurso.estudianteID and tbl_estudiantesxcurso.CursoID=tbl_cursos.CursoID and tbl_asignaturas.CursoID=tbl_cursos.CursoID and tbl_usuarios.tipoUsuarioID=3 and tbl_cursos.CursoID=tbl_seccionesxcurso.CursoID and tbl_secciones.SeccionID=tbl_seccionesxcurso.SeccionID and tbl_asignaturas.asignaturaID=".$clase;
+			$consulta="SELECT tbl_estudiantes.EstudianteID,nombre,apellido, nombreCurso, nombreSeccion,nombreAsignatura FROM tbl_usuarios,tbl_asignaturas,tbl_cursos,tbl_estudiantesxcurso,tbl_estudiantes,tbl_secciones,tbl_seccionesxcurso,tbl_instituciones WHERE tbl_usuarios.usuarioID = tbl_estudiantes.usuarioID AND tbl_estudiantes.EstudianteID=tbl_estudiantesxcurso.estudianteID and tbl_estudiantesxcurso.CursoID=tbl_cursos.CursoID and tbl_asignaturas.CursoID=tbl_cursos.CursoID and tbl_usuarios.tipoUsuarioID=3 and tbl_cursos.CursoID=tbl_seccionesxcurso.CursoID and tbl_secciones.SeccionID=tbl_seccionesxcurso.SeccionID and tbl_estudiantes.institucionID=tbl_instituciones.institucionID and tbl_cursos.institucionID=tbl_instituciones.institucionID and tbl_estudiantes.institucionID=".$_SESSION['Institucion']." and tbl_asignaturas.asignaturaID=".$clase;
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			echo '<div id="cambio">
 			<div class="col-md-12 table-responsive">
@@ -112,7 +112,6 @@ if (empty($_SESSION)) {
     		;
 
 
-		}elseif ($_SESSION['TipoUsuario']=='3') {
 		}
 			?>
 	</div>

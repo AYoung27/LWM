@@ -4,6 +4,7 @@
 	$conexion = new Conexion();
 	$conexion->mysql_set_charset("utf8");
 	include("../Clases/Usuario.php");
+	session_start();
 
 	$nombre= ucwords(strtolower($_POST["txtNombre"]));
 	$apellido=ucwords(strtolower($_POST["txtApellido"]));
@@ -30,7 +31,7 @@
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$usuarioid=$resultado->fetch_array();
 
-			$consulta=sprintf("INSERT into tbl_docentes(usuarioID) values('%s')",$conexion->antiInyeccion($usuarioid['usuarioID']));
+			$consulta=sprintf("INSERT into tbl_docentes(usuarioID,institucionID) values('%s',%s)",$conexion->antiInyeccion($usuarioid['usuarioID']),$conexion->antiInyeccion($_SESSION['Institucion']));
 			$conexion->ejecutarconsulta($consulta);
 
 			$consulta =sprintf("INSERT INTO tbl_sesion(usuarioID, estado) values('%s','%s')", $conexion->antiInyeccion($usuarioid['usuarioID']), $conexion->antiInyeccion("0"));
@@ -44,7 +45,7 @@
 			$var = "Docente agregado con exito";		
 			echo "<script>
 					alert('".$var."');
-					window.location='../Docentes.php'; 
+					window.location='../Docentes.php';
 				  </script>";
 			
 			mysqli_close($conexion->getLink());

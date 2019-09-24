@@ -17,7 +17,7 @@ session_start();
     			</thead>
     	<tbody>";
 	if(isset($_POST['consulta'])){
-		$sql="SELECT usuarioID,nombre,apellido,cedula,telefono, tipoUsuarioID FROM tbl_usuarios WHERE tipoUsuarioID='3' and nombre like '%".$_POST['consulta']."%'";
+		$sql="SELECT tbl_usuarios.usuarioID, nombre, apellido, cedula,telefono, tipoUsuarioID from tbl_usuarios,tbl_estudiantes WHERE tbl_usuarios.usuarioID=tbl_estudiantes.usuarioID and tipoUsuarioID=3 AND tbl_estudiantes.institucionID=".$_SESSION['Institucion']." and nombre like '%".$_POST['consulta']."%'";
 	}
 	$resultado=$conexion->ejecutarconsulta($sql);
 	if ($conexion->cantidadregistros($resultado)>0) {

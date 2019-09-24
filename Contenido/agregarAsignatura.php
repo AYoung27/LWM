@@ -1,42 +1,13 @@
 <?php 
+include("../clases/Conexion.php");
+$conexion= new Conexion();
 session_start();
-include("Clases/Conexion.php");
-$conexion = new Conexion();
 $conexion->mysql_set_charset("utf8");
+if (empty($_SESSION)) {
+	header('Location: index.php');
+}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Learn With Me</title>
-	<link rel="stylesheet" type="text/css" href="Estilos/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="Estilos/fonts/awesome/css/all.css">
-	<link rel="icon" href="img/favicon3.png" >
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand pl-3" href="index.php"><img src="img/learn 1.png" height="40"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav mr-auto">
-			</ul>
-			<ul class="navbar-nav mr-2 my-lg-0">
-				<li class="nav-item">
-					<a href="#"><span class="text-white pr-3"><i class="fas fa-bell"></i></span></a>
-				</li>
-				<li class="nav-item">
-					<a href="#"><span class="text-white pr-3"><i class="fas fa-user"></i></span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active p-0" href="Acciones/CerrarSesion.php">Salir</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div id="zonaContenido" class="col-md-8 mt-5 mb-5 ml-auto mr-auto">
-		<div >
-			<div class="col-md-12" style="border-width: 1px 1px 1px 1px; border-style: solid; border-color: lightgray;">
+<div class="col-md-12" style="border-width: 1px 1px 1px 1px; border-style: solid; border-color: lightgray;">
 				<br>
 				<h4 style="text-align: center;">
 					Gestion de Asignaturas
@@ -49,7 +20,7 @@ $conexion->mysql_set_charset("utf8");
 							<a class="nav-link disabled" href="#AgregarAsignatura" aria-disabled="true">Agregar Asignatura</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#ModificarAsignatura" onclick="cargarDiv('zonaContenido','Contenido/eliminarAsignatura.php')" >Eliminar Asignatura</a>
+							<a class="nav-link" href="#ModificarAsignatura" onclick="cargarDiv('zonaContenido','Contenido/eliminarAsignatura.php')" >Modificar Asignatura</a>
 						</li>
 					</ul>
 				</div>
@@ -103,30 +74,3 @@ $conexion->mysql_set_charset("utf8");
 						</div>
 					</div>
 				</div>
-				<a href="GestionCursos.php" class="btn btn-primary mt-3">Regresar</a>
-			</div>
-		</div>
-	</div>
-	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
-		<div class="container">
-			<p class="text-center text-white">Copyright &copy; Learn With Me 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
-	<script type="text/javascript">
-		function eliminarAsignatura(asignaturaID){
-      if (confirm("Realmente desea eliminar este asignatura?")) {
-        window.location.href= "Acciones/eliminarAsignatura.php?asignaturaID="+asignaturaID;
-        } else {
-
-      }
-	}
-	</script>
-	<script type="text/javascript" src="Estilos/js/docentes.js"></script>
-	<script src="Estilos/js/jquery.min.js"></script>
-	<script src="Estilos/js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-	
-
-</body>
-</html>

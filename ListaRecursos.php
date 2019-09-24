@@ -56,19 +56,14 @@ if (empty($_SESSION)) {
 			</div>
 			
 		</div>
+		<?php  
+			$asignaturaID=$_GET['AsignaturaID'];
+		?>
 
 		<div class="form-row mt-4 mb-4" >
+
+			<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $asignaturaID;?>" style="display: none;">
 			<button class="btn btn-success ml-auto  " type="submit">Subir Archivo</button>
-			<?php 
-				$nombre=$_GET['nombreAsignatura'];
-				$consulta = "SELECT asignaturaID from tbl_asignaturas where nombreAsignatura='".$nombre."'";
-				$resultado = $conexion->ejecutarconsulta($consulta);
-				$bandera = mysqli_num_rows($resultado);
-				if($bandera!=0){
-					$arreglo = $resultado->fetch_array(); 
-				}
-			?>
-			<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $arreglo['asignaturaID'];?>" style="display: none;">
 		</div>
 	</form> 
 
@@ -85,14 +80,14 @@ if (empty($_SESSION)) {
  				</thead>
  				<tbody>
  					<?php 
- 						$consulta = "SELECT nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$arreglo['asignaturaID'];
+ 						$consulta = "SELECT recursoID,nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$asignaturaID;
  						$resultado = $conexion->ejecutarconsulta($consulta);
  						$bandera=mysqli_num_rows($resultado);
  						if($bandera!=0){
  							while($arreglo = $resultado->fetch_array()){
  								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
  								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td><button class="btn btn-primary mr-2"><i class="glyphicon glyphicon-remove">Descargar</button><button class="btn btn-danger"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
+ 								 echo '<td><a class="btn btn-primary mr-2" href="Archivos/'.$arreglo['nombreArchivo'].'"><i class="glyphicon glyphicon-remove">Descargar</a><button class="btn btn-danger" onclick="eliminarRecurso('.$arreglo['recursoID'].')"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
 
  							}
  						}else{
@@ -116,5 +111,14 @@ if (empty($_SESSION)) {
 	</div>
 			<!-- /.container -->
 </footer>
+<script type="text/javascript">
+		function eliminarRecurso(recursoID){
+      if (confirm("Realmente desea eliminar este archivo?")) {
+        window.location.href= "Acciones/eliminarRecurso.php?recursoID="+recursoID;
+        } else {
+
+      }
+	}
+	</script>
 </body>
 </html>

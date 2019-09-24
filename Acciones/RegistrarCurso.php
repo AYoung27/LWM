@@ -10,17 +10,17 @@
 
 	$secciones=$_POST["txtSecciones"];
 
-	$consulta = sprintf("SELECT count(*) FROM tbl_cursos WHERE nombreCurso = '%s'",$conexion->antiInyeccion($nombre));
+	$consulta = sprintf("SELECT count(*) FROM tbl_cursos WHERE institucionID='%s' and nombreCurso = '%s'",$conexion->antiInyeccion($_SESSION['Institucion']),$conexion->antiInyeccion($nombre));
 		$resultado = $conexion->ejecutarconsulta($consulta);
 
 		//	Verificar que no se haya registrado el curso, insertar si no hay coincidencias
 		if ($resultado->fetch_assoc()['count(*)'] == '0') {		
 			//	Realizar insercion
 
-			$consulta=sprintf("INSERT INTO tbl_Cursos(nombreCurso) VALUES ('%s')",$conexion->antiInyeccion($nombre));
+			$consulta=sprintf("INSERT INTO tbl_Cursos(nombreCurso, institucionID) VALUES ('%s', '%s')",$conexion->antiInyeccion($nombre), $conexion->antiInyeccion($_SESSION['Institucion']));
 			$conexion->ejecutarconsulta($consulta);
 
-			$consulta="SELECT cursoID FROM tbl_Cursos where nombreCurso='".$nombre."'";
+			$consulta=sprintf("SELECT cursoID FROM tbl_Cursos where institucionID='%s' and nombreCurso='%s'",$conexion->antiInyeccion($_SESSION['Institucion']),$conexion->antiInyeccion($nombre));
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$aux=$resultado->fetch_assoc()['cursoID'];
 

@@ -46,10 +46,10 @@ $conexion->mysql_set_charset("utf8");
 				<div class="container">								
 					<ul class="nav justify-content-center">
 						<li class="nav-item">
-							<a class="nav-link disabled" href="#AgregarAsignatura" aria-disabled="true">Agregar Curso</a>
+							<a class="nav-link disabled" href="#AgregarCurso" aria-disabled="true">Agregar Curso</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#ModificarAsignatura" onclick="cargarDiv('zonaContenido','Contenido/modificarCurso.php')" >Modificar Curso</a>
+							<a class="nav-link" href="#ModificarCurso" onclick="cargarDiv('zonaContenido','Contenido/eliminarCurso.php')" >Eliminar Curso</a>
 						</li>
 					</ul>
 				</div>
