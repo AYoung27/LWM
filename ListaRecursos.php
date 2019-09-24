@@ -55,7 +55,10 @@ if (empty($_SESSION)) {
 			$asignaturaID=$_GET['AsignaturaID'];?>
 				<div class="col-lg-4 mt-4">
 					<input type="number" name="txtIdentificador" id="txtIdentificador" value="<?php echo $asignaturaID;?>" style="display: none;">
-					<button class="btn btn-success ml-auto  " type="submit">Subir Archivo</button>
+					
+				</div>
+				<div class="col-lg-4" style="margin-top: 25px;">
+					<button class="btn btn-primary  " type="submit" style="border-radius: 20px">Subir Archivo</button>
 				</div>	
 			</div>
 		
@@ -81,7 +84,7 @@ if (empty($_SESSION)) {
  							while($arreglo = $resultado->fetch_array()){
  								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
  								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td><a class="btn btn-primary mr-2" href="Archivos/'.$arreglo['nombreArchivo'].'"><i class="glyphicon glyphicon-remove">Descargar</a><button class="btn btn-danger" onclick="eliminarRecurso('.$arreglo['recursoID'].')"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
+ 								 echo '<td><a class="btn btn-primary mr-2" href="Archivos/'.$arreglo['nombreArchivo'].'" style="border-radius: 20px"><i class="glyphicon glyphicon-remove">Descargar</a><button class="btn btn-danger" onclick="eliminarRecurso('.$arreglo['recursoID'].')" style="border-radius: 20px"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
 
  							}
  						}else{
@@ -94,7 +97,7 @@ if (empty($_SESSION)) {
  			</div>		
 
 	</div>
-	<a href="RecursosEstudiantiles.php" ><button class=" btn btn-primary mb-2 mt-2" >Regresar</button></a>
+	<a href="RecursosEstudiantiles.php" ><button class=" btn btn-primary mb-2 mt-2" style="border-radius: 20px">Regresar</button></a>
 	</div>
 
 

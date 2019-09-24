@@ -70,8 +70,14 @@ if (empty($_SESSION)) {
 		}elseif ($_SESSION['TipoUsuario']=='3') {
 			$consulta="SELECT `Nota1`, `Nota2`, `Nota3`, `Nota4`,nombreAsignatura,nombreCurso, nombreSeccion FROM tbl_calificaciones,tbl_estudiantes,tbl_cursos,tbl_secciones,tbl_seccionesxcurso,tbl_estudiantesxcurso, tbl_instituciones,tbl_asignaturas WHERE tbl_calificaciones.asignaturaID=tbl_asignaturas.asignaturaID AND tbl_calificaciones.estudianteID=tbl_estudiantes.EstudianteID AND tbl_asignaturas.CursoID=tbl_cursos.CursoID AND tbl_estudiantesxcurso.CursoID=tbl_cursos.CursoID AND tbl_estudiantesxcurso.estudianteID = tbl_estudiantes.EstudianteID and tbl_estudiantes.SeccionID=tbl_secciones.SeccionID and tbl_cursos.CursoID = tbl_seccionesxcurso.CursoID and tbl_seccionesxcurso.SeccionID=tbl_secciones.SeccionID and tbl_asignaturas.institucionID=tbl_instituciones.institucionID AND tbl_estudiantes.institucionID=tbl_instituciones.institucionID and tbl_cursos.institucionID= tbl_instituciones.institucionID and tbl_estudiantes.EstudianteID=".$_SESSION['Estudiante']." and tbl_instituciones.institucionID=".$_SESSION['Institucion'];
 			$resultado=$conexion->ejecutarconsulta($consulta);
+			echo '<div class="col-md-12" style="border-width: 1px 1px 1px 1px; border-style: solid; border-color: lightgray;">
+				<br>
+				<h4 style="text-align: center;">
+					Calificaciones
+				</h4>
 
-			echo '<div id="cambio">
+				<hr>
+			<div id="cambio">
 			<div class="col-md-12 table-responsive">
             <table class="table table-bordered">
     			<thead>
@@ -98,6 +104,7 @@ if (empty($_SESSION)) {
     		
     		echo '</tbody>
     		</table>
+    		</div>
     		</div>
     		</div>'
     		;

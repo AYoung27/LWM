@@ -38,20 +38,20 @@ $conexion->mysql_set_charset("utf8");
 			<div class="card-body">
 				<h5 class="card-title">Gestionar cursos</h5>
 				<p class="card-text">Agregar o eliminar la informacion de un curso en especifico</p>
-				<a href="Cursos.php" class="btn btn-primary float-right">Ir</a>
+				<a href="Cursos.php" class="btn btn-primary float-right" style="border-radius: 20px">Ir</a>
 			</div>
 		</div>
-		<div class="card mt-5 mb-5">
+		<div class="card mt-5 mb-2">
 			<div class="card-header">
 				<h3 class="text-center">Asignaturas</h3>
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">Gestionar Asignaturas</h5>
 				<p class="card-text">Agregar o eliminar la informacion de una asignatura en especifico</p>
-				<a href="Asignaturas.php" class="btn btn-primary float-right">Ir</a>
+				<a href="Asignaturas.php" class="btn btn-primary float-right" style="border-radius: 20px">Ir</a>
 			</div>
 		</div>
-		<a href="index.php" ><button class=" btn btn-primary mb-2">Regresar</button></a>
+		<a href="Principal.php" ><button class=" btn btn-primary mb-5" style="border-radius: 20px">Regresar</button></a>
 	</div>
 	<footer class="py-5 mw-100 bg-dark" style=" position: absolute; width: 100%;">
 		<div class="container">

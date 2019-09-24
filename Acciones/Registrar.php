@@ -39,7 +39,7 @@
 			$conexion->ejecutarconsulta($consulta);
 			
 			// Redirigir
-			$consulta="SELECT intitucionID from tbl_instituciones where usuarioID=".$_SESSION['ID'];
+			$consulta="SELECT institucionID from tbl_instituciones where usuarioID=".$_SESSION['ID'];
 			$resultado=$conexion->ejecutarconsulta($consulta);
 			$_SESSION['Institucion'] = $resultado->fetch_assoc()['institucionID'];
 			

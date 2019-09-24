@@ -56,7 +56,7 @@ if (empty($_SESSION)) {
  							while($arreglo = $resultado->fetch_array()){
  								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
  								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td><a class="btn btn-primary mr-2 text-white" href="Archivos/'.$arreglo['nombreArchivo'].'">Descargar</a></td></tr>';
+ 								 echo '<td><a class="btn btn-primary mr-2 text-white" href="Archivos/'.$arreglo['nombreArchivo'].'" style="border-radius: 20px">Descargar</a></td></tr>';
 
  							}
  						}else{
@@ -67,7 +67,7 @@ if (empty($_SESSION)) {
  				</tbody>
  			</table>
  			</div>
- 			<a href="RecursosEstudiantiles.php"><button class="mt-3 mb-3 btn btn-primary">Regresar</button></a>	
+ 			<a href="RecursosEstudiantiles.php"><button class="mt-3 mb-3 btn btn-primary" style="border-radius: 20px">Regresar</button></a>	
 
 	</div>
 	</div>

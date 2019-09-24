@@ -28,6 +28,15 @@ if (empty($_SESSION)) {
       <ul class="navbar-nav mr-auto">
       </ul>
       <ul class="navbar-nav mr-2 my-lg-0">
+        <?php 
+        if ($_SESSION['TipoUsuario']==1) {
+           # code...
+        echo '  
+        <li class="nav-item mr-5">
+          <a href="planesPago.php" class="btn btn-primary" style="border-radius: 20px">¡Actualiza tu plan Ahora!</a>
+        </li>';
+        }
+        ?>
         <li class="nav-item">
           <a class="nav-link active p-0" href="Acciones/CerrarSesion.php">Salir</a>
         </li>
@@ -61,11 +70,15 @@ if (empty($_SESSION)) {
 
     <div class="alert alert-primary  my-5 py-4 text-center" role="alert" >
       <?php
-      $consulta="SELECT descripcion, nivelID FROM tbl_anuncios";
+      $consulta="SELECT descripcion, nivelID FROM tbl_anuncios,tbl_instituciones where tbl_anuncios.institucionID=tbl_instituciones.institucionID and tbl_instituciones.institucionID=".$_SESSION['Institucion'];
       $resultado=$conexion->ejecutarconsulta($consulta);
+      if($conexion->cantidadRegistros($resultado)==0){
+        echo '<p class="text-black ml-2">No hay anucios en la plataforma</p>';
+      }else{
       while($arreglo=$resultado->fetch_array()){
         echo '<i class="fa fa-warning"></i><p class="text-black ml-2">'.$arreglo['descripcion'].'</p>';
       } 
+    }
       ?>
     </div>
 
@@ -87,9 +100,9 @@ if (empty($_SESSION)) {
             $resultado=$conexion->ejecutarconsulta($consulta);
             if ($resultado->fetch_assoc()['planID']==1) {
               # code..
-             echo '<a href="#" class="btn btn-primary btn-sm">Entrar</a>';
+             echo '<a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }else{
-              echo '<a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm">Entrar</a>';
+              echo '<a href="RecursosEstudiantiles.php" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }
             ?>
           </div>
@@ -105,7 +118,7 @@ if (empty($_SESSION)) {
             <p class="card-text" style="text-align: justify;"> <br> ¿Tienes problemas para poder usar algunas funciones? Entra aquí para recibir asistencia de como usar nuestros servicios. <br> ¡Nada es mejor que LWM! </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Entrar</a>
+            <a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>
           </div>
         </div>
       </div>
@@ -124,9 +137,9 @@ if (empty($_SESSION)) {
             $resultado=$conexion->ejecutarconsulta($consulta);  
             if ($resultado->fetch_assoc()['planID']==1) {
               # code..
-             echo '<a href="#" class="btn btn-primary btn-sm">Entrar</a>';
+             echo '<a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }else{
-              echo '<a href="Calificaciones.php" class="btn btn-primary btn-sm">Entrar</a>';
+              echo '<a href="Calificaciones.php" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }
             ?>
           </div>
@@ -152,9 +165,9 @@ if (empty($_SESSION)) {
             $resultado=$conexion->ejecutarconsulta($consulta);
         if ($resultado->fetch_assoc()['planID']==1) {
               # code..
-             echo '<a href="#" class="btn btn-primary btn-sm">Entrar</a>';
+             echo '<a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }else{
-              echo '<a href="GestionUsuario.php" class="btn btn-primary btn-sm">Entrar</a>';
+              echo '<a href="GestionUsuario.php" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }
         echo' </div>
         </div>
@@ -169,11 +182,13 @@ if (empty($_SESSION)) {
         <p class="card-text" style="text-align: justify;"><br>Aqui se puede gestionar los cursos. <br>¡Entra ahora y crea un nuevo curso del instituto!</p>
         </div>
         <div class="card-footer">';
+         $consulta="SELECT tbl_instituciones.planID from tbl_instituciones,tbl_planes where tbl_instituciones.planID=tbl_planes.planID and tbl_instituciones.institucionID=".$_SESSION['Institucion'];
+            $resultado=$conexion->ejecutarconsulta($consulta);
         if ($resultado->fetch_assoc()['planID']==1) {
               # code..
-             echo '<a href="#" class="btn btn-primary btn-sm">Entrar</a>';
+             echo '<a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }else{
-              echo '<a href="GestionCursos.php" class="btn btn-primary btn-sm">Entrar</a>';
+              echo '<a href="GestionCursos.php" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>';
             }
         
         echo '</div>
@@ -215,7 +230,7 @@ if (empty($_SESSION)) {
       </div>
       </div>
       <div class="row ml-2">
-      <button type="submit" class="btn btn-primary">Publicar anuncio</button>
+      <button type="submit" class="btn btn-primary" style="border-radius: 20px">Publicar anuncio</button>
       </div>   
       </form>
 

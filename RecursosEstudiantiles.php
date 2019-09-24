@@ -48,7 +48,7 @@ if (empty($_SESSION)) {
 				<p class="card-text">Curso: '.$arreglo['nombreCurso'].' Seccion: '.$arreglo['nombreSeccion'].'</p>
 				</div>
 				<div class="card-footer">
-				<a href="ListaRecursos.php?AsignaturaID='.$arreglo['asignaturaID'].'" class="btn btn-primary btn-sm">More Info</a>
+				<a href="ListaRecursos.php?AsignaturaID='.$arreglo['asignaturaID'].'" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>
 				</div>
 				</div>
 				</div>';
@@ -74,7 +74,7 @@ if (empty($_SESSION)) {
 				<p class="card-text">Curso: '.$arreglo['nombreCurso'].' Seccion: '.$arreglo['nombreSeccion'].'</p>
 				</div>
 				<div class="card-footer">
-				<a href="ListaRecursosEstudiantes.php?AsignaturaID='.$arreglo['asignaturaID'].'" class="btn btn-primary btn-sm">More Info</a>
+				<a href="ListaRecursosEstudiantes.php?AsignaturaID='.$arreglo['asignaturaID'].'" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>
 				</div>
 				</div>
 				</div>';

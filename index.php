@@ -13,6 +13,7 @@
     
     <!-- style CSS -->
     <link rel="stylesheet" href="Estilos/css/style.css">
+    <link rel="icon" href="img/favicon3.png" >
 </head>
 
 <body style="background: #f8f8ff;">
