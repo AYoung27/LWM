@@ -32,7 +32,7 @@
 
                     <div class="collapse navbar-collapse main-menu-item justify-content-end"
                     id="navbarSupportedContent">
-                    <ul class="navbar-nav align-items-center" ">
+                    <ul class="navbar-nav align-items-center">
 
                         <li class="nav-item" >
                             <a class="nav-link" href="indexp.php" style="color:#f8f8ff";>Inicio</a>
@@ -62,7 +62,7 @@
                         <h5>¿Sabias que..?</h5>
                         <h1>Un Aula esta a un clic de distancia</h1>
                         <p>Learn With me es una plataforma estudiantil donde maestros  alumnos tendrán su propia aula virtual.  </p>
-                        <a href="#" class="btn_1">Registrar Instituto ahora </a>
+                        <a href="Registro.php" class="btn_1">Registrar Instituto ahora </a>
                         
                     </div>
                 </div>

@@ -19,7 +19,7 @@ if (empty($_SESSION)) {
 							<a class="nav-link " href="#AgregarCurso" onclick="cargarDiv('zonaContenido','Contenido/agregarCurso.php')" >Agregar Curso</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link disabled" href="#ModificarCurso" aria-disabled="true">Modificar Curso</a>
+							<a class="nav-link disabled" href="#ModificarCurso" aria-disabled="true">Eliminar Curso</a>
 						</li>
 					</ul>
 				</div>
@@ -27,21 +27,21 @@ if (empty($_SESSION)) {
 				<table class="table table-bordered">
 				<thead>
 				   	<tr>
- 						<th>Nombre</th>
+ 						<th>Nombre Curso</th>
  						<th>Seccion</th>
  						<th>Opciones</th>
  					</tr>
  				</thead>
  				<tbody>
  					<?php 
- 						$consulta = "SELECT nombreArchivo, Descripcion, tipo from tbl_recursosestudiantiles where asignaturaID=".$asignaturaID;
+ 						$consulta = "SELECT tbl_cursos.CursoID,nombreCurso,nombreSeccion from tbl_cursos,tbl_secciones, tbl_seccionesxcurso,tbl_instituciones where tbl_cursos.institucionID=tbl_instituciones.institucionID and tbl_cursos.CursoID=tbl_seccionesxcurso.CursoID and tbl_secciones.SeccionID=tbl_seccionesxcurso.SeccionID and tbl_instituciones.institucionID=".$_SESSION['Institucion'];
  						$resultado = $conexion->ejecutarconsulta($consulta);
  						$bandera=mysqli_num_rows($resultado);
  						if($bandera!=0){
  							while($arreglo = $resultado->fetch_array()){
- 								 echo '<td>'.$arreglo['nombreArchivo'].'</td>';
- 								 echo '<td>'.$arreglo['Descripcion'].'</td>';
- 								 echo '<td><button class="btn btn-danger"><i class="glyphicon glyphicon-remove">Eliminar</button></td></tr>';
+ 								 echo '<td>'.$arreglo['nombreCurso'].'</td>';
+ 								 echo '<td>'.$arreglo['nombreSeccion'].'</td>';
+ 								 echo '<td><button class="btn btn-danger"><i class="glyphicon glyphicon-remove" onclick="eliminarCurso('.$arreglo['CursoID'].')">Eliminar</button></td></tr>';
 
  							}
  						}else{

@@ -79,6 +79,7 @@ $conexion->mysql_set_charset("utf8");
 						</div>
 					</div>
 				</div>
+				<a href="GestionCursos.php" class="btn btn-primary mt-3">Regresar</a>
 			</div>
 		</div>
 	</div>
@@ -89,9 +90,9 @@ $conexion->mysql_set_charset("utf8");
 		<!-- /.container -->
 	</footer>
 	<script type="text/javascript">
-		function eliminarDocente(usuarioID){
-      if (confirm("Realmente desea eliminar a este docente?")) {
-        window.location.href= "Acciones/eliminarDocentes.php?usuarioID="+usuarioID;
+		function eliminarCurso(cursoID){
+      if (confirm("Realmente desea eliminar este curso?")) {
+        window.location.href= "Acciones/eliminarCurso.php?cursoID="+cursoID;
         } else {
 
       }

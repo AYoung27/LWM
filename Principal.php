@@ -110,18 +110,6 @@ if (empty($_SESSION)) {
       </div>
       <!-- /.col-md-4 -->
 
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 align="center" class="card-title">Asistencia</h2> <br> <br>
-            <div align="center"><img  src="Img/Tarjetas/T_Asistencia.png" height="auto" width="170px" style="font-size: 1em;" ></div>
-            <p class="card-text" style="text-align: justify;"> <br> ¿Tienes problemas para poder usar algunas funciones? Entra aquí para recibir asistencia de como usar nuestros servicios. <br> ¡Nada es mejor que LWM! </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px">Entrar</a>
-          </div>
-        </div>
-      </div>
 
       <!-- /.col-md-4 -->
       <div class="col-md-4 mb-5">
@@ -145,12 +133,9 @@ if (empty($_SESSION)) {
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
 
-      <!-- /.col-md-4 -->
       <?php 
-      if ($_SESSION['TipoUsuario']=='1') {
+          if ($_SESSION['TipoUsuario']=='1') {
         # code...
         echo '
         <div class="col-md-4 mb-5">
@@ -172,6 +157,13 @@ if (empty($_SESSION)) {
         echo' </div>
         </div>
         </div>';
+       ?>
+    </div>
+    <div class="row">
+
+      <!-- /.col-md-4 -->
+      <?php 
+      
 
         echo '
         <div class="col-md-4 mb-5">

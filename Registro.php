@@ -138,10 +138,10 @@ $conexion->mysql_set_charset("utf8");
                   </div>
                   <br>
                   <div class="form-row">
-                    <div class="col-lg-6"></div>
-                    <div class="col-lg-6">
-                      <button class="btn btn-primary float-right" type="submit">Registrar</button>
+                    <div class="col-lg-12">
                       <a href="index.php" class="btn btn-danger">Cancelar</a>
+                      <button class="btn btn-primary " type="submit">Registrar</button>
+                      
                     </div>  
                   </div>
             </form>
